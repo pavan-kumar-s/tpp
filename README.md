@@ -36,6 +36,17 @@ Furthermore, we updated the BrowseNet pipeline to employ BlendedRAG for retrieva
 | BrowseNet (GliNER)   | 69.40   | 84.55   | 66.60   | 86.80   | 43.97   | 60.46   | 59.99   | 77.27   |
 | BrowseNet (GPT-4o)   | 68.80   | 83.95   | 65.68   | 84.60   | 45.21   | 60.23   | 59.89   | 76.26   |
 
+Answer generation results in terms of Exact match (EM) and F1-score (F1) are reported in the following table. The number of chunks used as input to the LLM for HippoRAG and BrowseNet is ten.
+
+|    Method    | HotpotQA ||2WikiMQA||MuSiQue||Average||
+|------|------|------|------|------|------|------|------|------|
+|  | EM | F1 | EM | F1 | EM | F1 | EM | F1 |
+| LightRAG [10]  |  9.90  | 20.20   | 2.50   | 12.1  | 2.00  | 9.30    | 4.80   |  13.87  |
+| GraphRAG [11]  | 51.40  | 67.6   | 45.7   | 61.0   | 27.00   | 42.0  |41.37    | 56.87   |
+| HippoRAG  [9] | 44.30   | 60.53   | 50.00   | 63.06   | 22.00   | 35.06   | 38.77   | 52.88   |
+| BrowseNet (GliNER)   | 56.60   | 70.46   | 56.40   | 63.57   | 28.30   | 35.79   | 47.10   | 56.61   |
+| BrowseNet (GPT-4o)   | 56.30   | 69.37   | 54.50   | 61.46   | 27.70   | 35.97   | 46.17   | 55.60   |
+
 References:
 1) Robertson, S. E., & Walker, S. (1994). Some simple effective approximations to the 2-poisson model for probabilistic weighted retrieval. In SIGIR’94: Proceedings of the Seventeenth Annual International ACM-SIGIR Conference on Research and Development in Information Retrieval, organised by Dublin City University (pp. 232-241). Springer London.
 2) Izacard, G., Caron, M., Hosseini, L., Riedel, S., Bojanowski, P., Joulin, A., & Grave, E. (2021). Unsupervised dense information retrieval with contrastive learning. arXiv preprint arXiv:2112.09118.
