@@ -295,8 +295,15 @@ In the QA evaluation, BrowseNet with GliNER demonstrates superior performance ac
 
 
 **Weaknesses 5**<br>
-The analysis is a bit shallow. For example, error analysis over same samples could be done to show the percentage of various error types.
-############################################################
+We appreciate the reviewer’s feedback on the depth of our analysis. In response, we have now conducted a more detailed error analysis, including the breakdown of error types on 100 samples in the musique dataset, and have provided the percentage distribution of each error type in the following table. <br>
+|    Error type    | Percentage |
+|------|------|
+| NER + synonymous word extraction | 2 |
+| Query-subgraph extraction | 42 |
+| RAG | 56|
+As observed in the table, RAG accounts for the majority of the error in the retrieval process of BrowseNet. Upon analyzing the cause, we found that the embedding models used in this study are fine-tuned to retrieve relevant chunks for single-hop queries, but not for decomposed single-hop queries. For example, the question "When was Lady Godiva's birthplace abolished?" can be decomposed into:  "Q1) Where was Lady Godiva born? Q2) <Q1> When was Lady Godiva's birthplace abolished?". While the passage relevant to Q1 can be retrieved, there may be numerous potential candidates semantically closer to Q2. This occurs because the answer to Q1 is not provided to the embedding models, which results in added noise to the query and affects the retrieval accuracy for Q2. One potential direction for future work would be to train an embedding model specifically designed to excel at retrieving relevant information for decomposed subqueries. This would improve the retrieval accuracy by ensuring that the model can effectively handle queries broken down into smaller components, enhancing the overall performance in multi-hop reasoning tasks. <br>
+The next significant source of error in the pipeline arises from query-subgraph extraction. As detailed in the error analysis section of the manuscript, this issue occurs because a single multi-hop query can be decomposed in various ways. For instance, the query "What year did the publisher of Labyrinth end?" can be decomposed as: 'Q1) What is Labyrinth?  Q2) <Q1> Who is the publisher of Labyrinth?  Q3) <Q2> What year did the publisher of Labyrinth end?. The subquery Q1, which acts as the initial node, is an unnecessary step that disrupts the performance of the model, as it does not contribute directly to answering the final question and adds complexity to the retrieval process. <br>
+The NER (Named Entity Recognition) and synonymous word extraction step contributes the smallest portion (2%) to the error. This is primarily due to the LLMs' inability to recognize certain keywords present in the text, which leads to missed entities or synonyms that could have improved the retrieval process.
 
 **Comments Suggestions And Typos - 1:**
 We appreciate the reviewer’s suggestion to move Figure 2 to page 3. We will make this adjustment to improve the flow of the paper and ensure better clarity.
