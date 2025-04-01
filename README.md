@@ -19,7 +19,7 @@ We appreciate the reviewer’s suggestion to include a latency and accuracy comp
 9) LightRAG integrates graph-enhanced text indexing and a dual-level retrieval framework to improve the efficiency and contextual relevance of information retrieval [10].
 10) GraphRAG builds on traditional RAG by organizing datasets into knowledge graphs of entities and relationships, enabling global sensemaking and hierarchical reasoning [11].
 
-Furthermore, we updated the BrowseNet pipeline to employ BlendedRAG for retrieval instead of NaiveRAG. This change improved the average recall score for BrowseNet, making it the top-performing model compared to the others, as shown in the table below. As LightRAG and GraphRAG use LLM-generated text for retrieval, recall results for those methods are not shown here.
+Furthermore, we updated the BrowseNet pipeline to employ BlendedRAG for retrieval instead of NaiveRAG. This change improved the average recall score for BrowseNet, making it the top-performing model compared to the others, as shown in the table below. As LightRAG and GraphRAG use LLM-generated text for retrieval, recall results for those methods are not shown here. The approaches shown below are single-step retrieval approaches.
 
 
 |    Method    | HotpotQA ||2WikiMQA||MuSiQue||Average||
@@ -27,14 +27,14 @@ Furthermore, we updated the BrowseNet pipeline to employ BlendedRAG for retrieva
 |  | Recall@2 | Recall@5 | Recall@2 | Recall@5 | Recall@2 | Recall@5 | Recall@2 | Recall@5 |
 | BM25 [1]   | 55.40    | 72.20    | 51.80    |  61.90    | 32.30    | 41.20    | 46.50    | 58.43   |
 | Contriever [2]  | 57.20   | 75.50   | 46.60   | 57.50   | 34.80   | 46.60   | 46.20   | 59.87   |
-| Blended RAG [3]  | 69.65   | 85.35   | 57.37   | 67.80   | 42.04   | 56.34   | 56.35   | 69.83   |
+| Blended RAG [3]  | <ins>69.65</ins>   | <ins>85.35</ins>   | 57.37   | 67.80   | 42.04   | 56.34   | 56.35   | 69.83   |
 | GTR  [4] | 59.40   | 73.30   | 60.20  |  67.90   | 37.40  | 49.10  | 52.33   | 63.43   |
 | Proposition [5]  | 58.70   | 71.10  | 56.40   | 63.10   | 37.60   | 49.30   | 50.9   | 61.17   |
 | RAPTOR [6]  | 58.10   | 71.20   | 46.30   | 53.80  | 35.70  |  45.30   | 46.70   | 56.77   |
-| naiveRAG [7,8]  | 73.65  | 88.35   | 57.93   | 68.48   | 41.24   | 57.57   | 57.61   | 71.47   |
-| HippoRAG  [9] | 60.05   | 78.10   | 70.40   | 87.87   | 41.86   | 53.37   | 57.44   | 73.11   |
-| BrowseNet (GliNER)   | 69.40   | 84.55   | 66.60   | 86.80   | 43.97   | 60.46   | 59.99   | 77.27   |
-| BrowseNet (GPT-4o)   | 68.80   | 83.95   | 65.68   | 84.60   | 45.21   | 60.23   | 59.89   | 76.26   |
+| naiveRAG [7,8]  | **73.65**  | **88.35**   | 57.93   | 68.48   | 41.24   | 57.57   | 57.61   | 71.47   |
+| HippoRAG  [9] | 60.05   | 78.10   | **70.40**   | **87.87**   | 41.86   | 53.37   | 57.44   | 73.11   |
+| BrowseNet (GliNER)   | 69.40   | 84.55   | <ins>66.60</ins>   | <ins>86.80</ins>   | <ins>43.97</ins>   | **60.46**   | **59.99**   | **77.27**   |
+| BrowseNet (GPT-4o)   | 68.80   | 83.95   | 65.68   | 84.60   | **45.21**   | <ins>60.23</ins>   | <ins>59.89</ins>   | <ins>76.26</ins>   |
 
 Answer generation results in terms of Exact match (EM) and F1-score (F1) are reported in the following table. The number of chunks used as input to the LLM for HippoRAG and BrowseNet is ten.
 
@@ -42,10 +42,10 @@ Answer generation results in terms of Exact match (EM) and F1-score (F1) are rep
 |------|------|------|------|------|------|------|------|------|
 |  | EM | F1 | EM | F1 | EM | F1 | EM | F1 |
 | LightRAG [10]  |  9.90  | 20.20   | 2.50   | 12.1  | 2.00  | 9.30    | 4.80   |  13.87  |
-| GraphRAG [11]  | 51.40  | 67.6   | 45.7   | 61.0   | 27.00   | 42.0  |41.37    | 56.87   |
-| HippoRAG  [9] | 44.30   | 60.53   | 50.00   | 63.06   | 22.00   | 35.06   | 38.77   | 52.88   |
-| BrowseNet (GliNER)   | 56.60   | 70.46   | 56.40   | 63.57   | 28.30   | 35.79   | 47.10   | 56.61   |
-| BrowseNet (GPT-4o)   | 56.30   | 69.37   | 54.50   | 61.46   | 27.70   | 35.97   | 46.17   | 55.60   |
+| GraphRAG [11]  | 51.40  | 67.6   | 45.70   | 61.0   | 27.00   | 42.0  |41.37    | **56.87**   |
+| HippoRAG  [9] | 44.30   | 60.53   | 50.00   | <ins>63.06</ins>   | 22.00   | 35.06   | 38.77   | 52.88   |
+| BrowseNet (GliNER)   | **56.60**   | **70.46**   | **56.40**   | **63.57**   | **28.30**   | <ins>35.79</ins>   | **47.10**   | <ins>56.61</ins>   |
+| BrowseNet (GPT-4o)   | <ins>56.30</ins>   | <ins>69.37</ins>   | <ins>54.50</ins>   | 61.46   | <ins>27.70</ins>   | **35.97**   | <ins>46.17</ins>   | 55.60   |
 
 References:
 1) Robertson, S. E., & Walker, S. (1994). Some simple effective approximations to the 2-poisson model for probabilistic weighted retrieval. In SIGIR’94: Proceedings of the Seventeenth Annual International ACM-SIGIR Conference on Research and Development in Information Retrieval, organised by Dublin City University (pp. 232-241). Springer London.
