@@ -223,9 +223,6 @@ Thank you for your valuable suggestion.
 We thank the reviewer for the useful comments. We will revise the manuscript that incorporates all reviewers’ comments while submitting for Camera-ready papers<br>
 
 **Weaknesses 1**<br>
-"The structure of the paper is quite confusing, especially the experiment part. The Tables and Figures are not present near the relevant paragraph, increasing the burden of reading."
-
-Response:
 Thank you for pointing out the issues with the structure of the paper and the placement of Tables and Figures. We will carefully revise the manuscript to improve its overall clarity and readability. Specifically, we 
 will restructure the experimental section to ensure a more logical flow of information. Also, all Tables and Figures will be relocated to appear as close as possible to their corresponding paragraphs in the text. This adjustment ensures that readers can easily refer to them without having to search through other sections of the paper. We believe these changes will address your concerns and significantly enhance the readability of the manuscript. 
 
@@ -248,8 +245,15 @@ To tackle these challenges, researchers have incorporated Knowledge Graphs (KGs)
 
 
 **Weaknesses 3**<br>
-The difference between the proposed BrowseNet and HippoRAG seems to be the granularity of KG nodes. However, the document as KG node has been explored in https://arxiv.org/abs/2406.13372. It would be better to state the difference.
-############################################################
+The key differences between the KG of BrowseNet and HippoRAG are as given below:
+1) The nodes in the HippoRAG are the entities and in the case of BrowseNet, it is the chunks/passages.
+2) The edges between the nodes indicate the presence of a relation between the nodes in HippoRAG. For BrowseNet, the edge indicates the  presence of a common keyword between the passages.
+3) Construction of KG in BrowseNet requires only named-entity recognition (NER) to be done. For HippoRAG, both NER and relation extraction (RE) have to be done. <br>
+
+Further, we agree with the reviewer that the document as a KG node has been explored in the previous studies like THREAD [1]. The key difference between these two methods lies in the way of constructing the KG and the granularity of the nodes. KG construction in THREAD involves organizing the documents into five-element logic units; on the other hand, BrowseNet uses the raw documents without any LLM generated text to construct the KG. Moreover, nodes of KG in THREAD includes header, body, linker etc., In the case of BrowseNet, its only the documents or the passages.
+
+**References**
+1) An, K., Yang, F., Li, L., Lu, J., Cheng, S., Si, S., ... & Chang, B. (2024). Thread: A Logic-Based Data Organization Paradigm for How-To Question Answering with Retrieval Augmented Generation. arXiv preprint arXiv:2406.13372.
 
 **Weaknesses 4**<br>
 Thank you for your valuable suggestion. We acknowledge that our results may not have been presented as clearly as intended. Here, we present here the new set of baselines with which BrowseNet is compared to provide a more comprehensive justification for our conclusions.
