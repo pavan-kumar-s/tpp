@@ -158,3 +158,17 @@ BrowseNet with GliNER demonstrates superior performance across all datasets with
 10) Guo, Z., Xia, L., Yu, Y., Ao, T., & Huang, C. (2024). Lightrag: Simple and fast retrieval-augmented generation.
 11) Edge, D., Trinh, H., Cheng, N., Bradley, J., Chao, A., Mody, A., ... & Larson, J. (2024). From local to global: A graph rag approach to query-focused summarization. arXiv preprint arXiv:2404.16130.
 
+**Weaknesses 3**<br>
+In response to the reviewer’s suggestion, we have expanded the evaluation to include quantitative metrics for query-graph generation. We define the metric as isomorphic accuracy that captures the structural similarity of the query-subgraph with respect to the reasoning pathway provided in the 2WikiMQA and Musique dataset.<br>
+Two graphs, $G1$ and $G2$, are considered isomorphic if there exists a bijective function $f$ that maps the vertices of $G1$ to those of $G2$ while preserving adjacency. That is, an edge exists between vertices $u$ and $v$ in $G1$ if and only if an edge exists between $f(u)$ and $f(v)$ in $G2$. For our case, $G1$ is the query-subgraph and $G2$ is the graph that can be derived from the reasoning path or query decomposition provided in the 2WikiMQA and musique datasets, respectively.
+<br>
+For instance, in the Musique dataset, consider the query:
+"What month did the Tripartite discussions begin between Britain, France, and the country where, despite being headquartered in the nation called the nobilities commonwealth, the top-ranking Warsaw Pact operatives originated?" <br>
+The provided decomposition is: Q1)'What was the nobilities commonwealth?' Q2) 'Despite being headquartered in #1, the top-ranking operatives of the Warsaw Pact were from which country?' Q3) 'What month did the Tripartite discussions begin between Britain, #2 and France?'. <br>
+This decomposition can be represented as a graph Q1-->Q2-->Q3. <br>
+The GPT-4o model generated query decomposition is: Q1) What is the nation called the nobility's commonwealth? Q2) <Q1> Where are the top-ranking Warsaw Pact operatives headquartered? Q3) <Q2> In which country did the top-ranking Warsaw Pact operatives originate?\nQ4) <Q3> What month did the Tripartite discussions begin between Britain, France, and the country where the top-ranking Warsaw Pact operatives originated? <br>
+This decomposition can be represented as a graph Q1-->Q2-->Q3-->Q4. Here, as both the queries have different structures, the isomorphic accuracy is 0. <br>
+Similarly, isomorphic accuracy can be calculated for the 2WikiMQA corpus too. The average isomorphic accuracy is given in the following table.
+
+
+
