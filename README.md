@@ -64,8 +64,20 @@ BrowseNet with GliNER demonstrates superior performance across all datasets with
 10) Guo, Z., Xia, L., Yu, Y., Ao, T., & Huang, C. (2024). Lightrag: Simple and fast retrieval-augmented generation.
 11) Edge, D., Trinh, H., Cheng, N., Bradley, J., Chao, A., Mody, A., ... & Larson, J. (2024). From local to global: A graph rag approach to query-focused summarization. arXiv preprint arXiv:2404.16130.
 
- ############################## 
+ <br>
  
+ **Latency analysis**
+ For latency comparison, GraphRAG, LightRAG, and BrowseNET pipelines were considered. 
+
+|Method | Average runtime per query (seconds) |
+|------|------|
+|BrowseNet|1.18|
+|GraphRAG|3.669|
+|LightRAG|6.73|
+
+BrowseNet has the fastest retrieval performance compared to the other methods because of its single-step multi-hop retrieval strategy. 
+
+
 **Weakness-3:**<br>
 We appreciate the reviewer’s feedback on the need to analyze critical parameters such as the ColBERT synonymity threshold. In response, we have conducted a detailed sensitivity analysis on the synonymity threshold as shown below. The NER model used below for this analysis is GLiNER.
 | Synonymity threshold | Edge Accuracy (2WikiMQA) | Edge Accuracy (MuSiQue) | Recall@5 (HoptpotQA)| Recall@5 (2WikiMQA)| Recall@5 (MuSiQue)|
