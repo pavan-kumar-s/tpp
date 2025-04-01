@@ -70,6 +70,19 @@ We appreciate the reviewer’s feedback on the need to analyze critical paramete
 
 The table suggests that the recall@5 metric remains consistent across all datasets used in the study. However, edge accuracy tends to be higher when the synonymity threshold is low. Additionally, as the threshold decreases, leading to a denser graph, the retrieval time is expected to rise due to the greater number of potential neighbors for each node. This indicates a trade-off between efficiency and effectiveness: a lower threshold increases retrieval time due to greater graph density, while a higher threshold reduces it.
 
+**Weakness-4:**<br>
+We appreciate the reviewer’s feedback but would appreciate further clarification on this point to ensure we address it appropriately.
+
+**Comments Suggestions And Typos 1:**<br>
+We appreciate the reviewer’s attention to detail. We will correct the JSON formatting in Figure 3 by ensuring the proper closing brace (}) is included.
+
+**Comments Suggestions And Typos 2:**<br>
+In response to the reviewer’s suggestion, we have conducted additional experiments and presented the results above.
+
+**Comments Suggestions And Typos 3:**<br>
+A subquery could fail because of a decomposed query returning no Knowledge Graph (KG) nodes, or a node in KG having no neighbours. We address each of the cases as defined below:
+1) Decomposed query returning no KG nodes: As the retrieval and sorting of nodes is based on the cosine-similarity between the query and the passage, a decomposed query will return no KG nodes if the cosine similarity is zero. High dimensionality of the embedding vector (128-1024+ dimensions) and continuous value distributions make true zeros improbable for cosine-similarity.
+2) A node in KG having no neighbours: If a given predecessor node in the knowledge graph (KG) has no neighbors, all nodes in the KG are treated as its neighbors, and the search is performed across the entire graph.
 
 
 
