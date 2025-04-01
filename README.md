@@ -194,7 +194,9 @@ The following table shows the results of evaluating the keyword generation in te
 |GPT-4o|2WikiMQA | 98.74|
 |GPT-4o|MuSiQue |  97.83|
 |Claude-3.7 Sonnet|2WikiMQA | 99.73|
-|Claude-3.7 Sonnet|MuSiQue |  |
+|Claude-3.7 Sonnet|MuSiQue | 94.33 |
+
+It can be inferred from the given table that gpt-4o model has the highest edge acccuracy compared to the other methods in the case of the MusiQue dataset. For 2WikiMQA dataset, GLiNER model has the highest edge accuracy that the other LLMs employed.<br>
 
 Further, the query-subgraphs generated were also evaluated for their isomorphic similarity with the query decomposition given in the benchmark datasets for both the Claude-3.7 Sonnet and gpt-4o models as shown previously.
 
