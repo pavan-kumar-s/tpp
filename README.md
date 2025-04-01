@@ -42,10 +42,10 @@ Answer generation results in terms of Exact match (EM) and F1-score (F1) are rep
 |------|------|------|------|------|------|------|------|------|
 |  | EM | F1 | EM | F1 | EM | F1 | EM | F1 |
 | LightRAG [10]  |  9.90  | 20.20   | 2.50   | 12.1  | 2.00  | 9.30    | 4.80   |  13.87  |
-| GraphRAG [11]  | 51.40  | 67.6   | 45.70   | 61.0   | 27.00   | 42.0  |41.37    | **56.87**   |
+| GraphRAG [11]  | 51.40  | 67.6   | 45.70   | 61.0   | 27.00   | **42.0**  |41.37    | **56.87**   |
 | HippoRAG  [9] | 44.30   | 60.53   | 50.00   | <ins>63.06</ins>   | 22.00   | 35.06   | 38.77   | 52.88   |
-| BrowseNet (GliNER)   | **56.60**   | **70.46**   | **56.40**   | **63.57**   | **28.30**   | <ins>35.79</ins>   | **47.10**   | <ins>56.61</ins>   |
-| BrowseNet (GPT-4o)   | <ins>56.30</ins>   | <ins>69.37</ins>   | <ins>54.50</ins>   | 61.46   | <ins>27.70</ins>   | **35.97**   | <ins>46.17</ins>   | 55.60   |
+| BrowseNet (GliNER)   | **56.60**   | **70.46**   | **56.40**   | **63.57**   | **28.30**   | 35.79   | **47.10**   | <ins>56.61</ins>   |
+| BrowseNet (GPT-4o)   | <ins>56.30</ins>   | <ins>69.37</ins>   | <ins>54.50</ins>   | 61.46   | <ins>27.70</ins>   | <ins>35.97</ins>   | <ins>46.17</ins>   | 55.60   |
 
 References:
 1) Robertson, S. E., & Walker, S. (1994). Some simple effective approximations to the 2-poisson model for probabilistic weighted retrieval. In SIGIR’94: Proceedings of the Seventeenth Annual International ACM-SIGIR Conference on Research and Development in Information Retrieval, organised by Dublin City University (pp. 232-241). Springer London.
