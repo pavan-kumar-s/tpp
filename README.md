@@ -288,12 +288,11 @@ The analysis is a bit shallow. For example, error analysis over same samples cou
 We appreciate the reviewer’s suggestion to move Figure 2 to page 3. We will make this adjustment to improve the flow of the paper and ensure better clarity.
 
 **Comments Suggestions And Typos - 2:**
-Graph density measures how close a graph is to being complete. For an undirected graph **KG** with **V** nodes (vertices) **E** edges, the density **D** is calculated as:<br>
-$D = \frac{2 * |E|}{|V| * (|V| - 1)}$
-$weight_{SG} = \sum_{i=1}^k \frac{similarity(V_{q,1}, V_1)}{i}$ <br>
+Graph density measures how close a graph is to being complete. For an undirected graph KG with V being the set of nodes (vertices) and E being the set of edges, the density D is calculated as:<br>
+$D = \frac{2 * |E|}{|V| * (|V| - 1)}$ <br>
+Here $|.|$ denotes the cardinality of the set.<br>
+We will now include a formal definition and explanation of how Graph Density is computed.
 
-
-
-Some words are missing in Line 399.
-GPT-4o model retrieves relevant entities399
-accurately in the benchmark datasets
+**Comments Suggestions And Typos - 3:**
+We appreciate the reviewer’s careful reading. We have identified the missing words in Line 399 and have corrected the sentence for clarity and completeness as shown below.
+"GPT-4o model retrieves relevant entities accurately in the benchmark datasets"
