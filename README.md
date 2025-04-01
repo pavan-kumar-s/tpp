@@ -217,7 +217,7 @@ Thank you for pointing out the issues with the structure of the paper and the pl
 will restructure the experimental section to ensure a more logical flow of information. Also, all Tables and Figures will be relocated to appear as close as possible to their corresponding paragraphs in the text. This adjustment ensures that readers can easily refer to them without having to search through other sections of the paper. We believe these changes will address your concerns and significantly enhance the readability of the manuscript. 
 
 **Weaknesses 2**<br>
-We appreciate the reviewer’s comment regarding the organization of Section 2.1. In response, we have restructured the related work section to better align with the focus of the paper and ensure it provides a more in-depth discussion of prior research.
+We appreciate the reviewer’s comment regarding the organization of Section 2.1. In response, we have restructured the related work section to better align with the focus of the paper and ensure it provides a more in-depth discussion of prior research. <br>
 **Related work:**
 The integration of knowledge graphs (KGs) with retrieval-augmented generation (RAG) systems has emerged as a pivotal strategy for addressing the limitations of conventional RAG frameworks in multi-document question answering (MD-QA). This section synthesizes advancements across two thematic areas: (1) foundational RAG architectures and their constraints in multi-hop reasoning, and (2) KG-enhanced retrieval frameworks.
 
