@@ -59,7 +59,15 @@ References:
 9) Jimenez Gutierrez, B., Shu, Y., Gu, Y., Yasunaga, M., & Su, Y. (2024). HippoRAG: Neurobiologically Inspired Long-Term Memory for Large Language Models. Advances in Neural Information Processing Systems, 37, 59532-59569.
 10) Guo, Z., Xia, L., Yu, Y., Ao, T., & Huang, C. (2024). Lightrag: Simple and fast retrieval-augmented generation.
 11) Edge, D., Trinh, H., Cheng, N., Bradley, J., Chao, A., Mody, A., ... & Larson, J. (2024). From local to global: A graph rag approach to query-focused summarization. arXiv preprint arXiv:2404.16130.
-
+    
+**Weakness-3:**<br>
+We appreciate the reviewer’s feedback on the need to analyze critical parameters such as the ColBERT synonymity threshold. In response, we have conducted a detailed sensitivity analysis on the synonymity threshold as shown below. The NER model used below for this analysis is GLiNER.
+| Synonymity threshold | Edge Accuracy (2WikiMQA) | Edge Accuracy (MuSiQue) | Recall@5 (HoptpotQA)| Recall@5 (2WikiMQA)| Recall@5 (MuSiQue)|
+|------|------|------|------|------|------|
+|0.7|100|97.43|84.85|85.22|59.78|
+|0.8|99.86|95.18|85.30|85.65|59.86|
+|0.9|99.86|94.78|84.55|86.80|60.45|
+The table suggests that the recall@5 metric remains consistent across all datasets used in the study. However, edge accuracy tends to be higher when the synonymity threshold is low. Additionally, as the threshold decreases, leading to a denser graph, the retrieval time is expected to rise due to the greater number of potential neighbors for each node. This indicates a trade-off between efficiency and effectiveness: a lower threshold increases retrieval time due to greater graph density, while a higher threshold reduces it.
 
 
 
