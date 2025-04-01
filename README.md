@@ -51,7 +51,7 @@ Answer generation results in terms of Exact match (EM) and F1-score (F1) are rep
 BrowseNet with GliNER demonstrates superior performance across all datasets with the highest average exact match score (47.10%), suggesting its effectiveness in retrieving precisely correct answers compared to other methods. Despite GraphRAG achieving the highest average F1 score (56.87%), BrowseNet variants consistently deliver more balanced performance across both metrics, particularly excelling in exact matches while maintaining competitive F1 scores, indicating their robust capabilities for complex multi-hop question answering tasks.
 <br>
 
-References:
+**References:**
 1) Robertson, S. E., & Walker, S. (1994). Some simple effective approximations to the 2-poisson model for probabilistic weighted retrieval. In SIGIR’94: Proceedings of the Seventeenth Annual International ACM-SIGIR Conference on Research and Development in Information Retrieval, organised by Dublin City University (pp. 232-241). Springer London.
 2) Izacard, G., Caron, M., Hosseini, L., Riedel, S., Bojanowski, P., Joulin, A., & Grave, E. (2021). Unsupervised dense information retrieval with contrastive learning. arXiv preprint arXiv:2112.09118.
 3) Sawarkar, K., Mangal, A., & Solanki, S. R. (2024, August). Blended rag: Improving rag (retriever-augmented generation) accuracy with semantic search and hybrid query-based retrievers. In 2024 IEEE 7th International Conference on Multimedia Information Processing and Retrieval (MIPR) (pp. 155-161). IEEE.
@@ -145,7 +145,7 @@ Answer generation results in terms of Exact match (EM) and F1-score (F1) are rep
 BrowseNet with GliNER demonstrates superior performance across all datasets with the highest average exact match score (47.10%), suggesting its effectiveness in retrieving precisely correct answers compared to other methods. Despite GraphRAG achieving the highest average F1 score (56.87%), BrowseNet variants consistently deliver more balanced performance across both metrics, particularly excelling in exact matches while maintaining competitive F1 scores, indicating their robust capabilities for complex multi-hop question answering tasks.
 <br>
 
-References:
+**References:**
 1) Robertson, S. E., & Walker, S. (1994). Some simple effective approximations to the 2-poisson model for probabilistic weighted retrieval. In SIGIR’94: Proceedings of the Seventeenth Annual International ACM-SIGIR Conference on Research and Development in Information Retrieval, organised by Dublin City University (pp. 232-241). Springer London.
 2) Izacard, G., Caron, M., Hosseini, L., Riedel, S., Bojanowski, P., Joulin, A., & Grave, E. (2021). Unsupervised dense information retrieval with contrastive learning. arXiv preprint arXiv:2112.09118.
 3) Sawarkar, K., Mangal, A., & Solanki, S. R. (2024, August). Blended rag: Improving rag (retriever-augmented generation) accuracy with semantic search and hybrid query-based retrievers. In 2024 IEEE 7th International Conference on Multimedia Information Processing and Retrieval (MIPR) (pp. 155-161). IEEE.
