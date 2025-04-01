@@ -67,6 +67,7 @@ We appreciate the reviewer’s feedback on the need to analyze critical paramete
 |0.7|100|97.43|84.85|85.22|59.78|
 |0.8|99.86|95.18|85.30|85.65|59.86|
 |0.9|99.86|94.78|84.55|86.80|60.45|
+
 The table suggests that the recall@5 metric remains consistent across all datasets used in the study. However, edge accuracy tends to be higher when the synonymity threshold is low. Additionally, as the threshold decreases, leading to a denser graph, the retrieval time is expected to rise due to the greater number of potential neighbors for each node. This indicates a trade-off between efficiency and effectiveness: a lower threshold increases retrieval time due to greater graph density, while a higher threshold reduces it.
 
 
