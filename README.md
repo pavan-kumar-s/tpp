@@ -168,7 +168,10 @@ The provided decomposition is: Q1)'What was the nobilities commonwealth?' Q2) 'D
 This decomposition can be represented as a graph Q1-->Q2-->Q3. <br>
 The GPT-4o model generated query decomposition is: Q1) What is the nation called the nobility's commonwealth? Q2) <Q1> Where are the top-ranking Warsaw Pact operatives headquartered? Q3) <Q2> In which country did the top-ranking Warsaw Pact operatives originate?\nQ4) <Q3> What month did the Tripartite discussions begin between Britain, France, and the country where the top-ranking Warsaw Pact operatives originated? <br>
 This decomposition can be represented as a graph Q1-->Q2-->Q3-->Q4. Here, as both the queries have different structures, the isomorphic accuracy is 0. <br>
-Similarly, isomorphic accuracy can be calculated for the 2WikiMQA corpus too. The average isomorphic accuracy is given in the following table.
-
+A similar approach is used to compute isomorphic accuracy for the 2WikiMQA corpus. The average isomorphic accuracy is summarized in the following table.
+|LLM model|2WikiMQA|MuSiQue|
+|------|------|------|
+| GPT-4o | 0.973 | 0.685 |
+| claude-3-7-sonnet  |  0.967  | 0.487 |
 
 
