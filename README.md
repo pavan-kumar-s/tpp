@@ -172,6 +172,22 @@ A similar approach is used to compute isomorphic accuracy for the 2WikiMQA corpu
 |LLM model|2WikiMQA|MuSiQue|
 |------|------|------|
 | GPT-4o | 0.973 | 0.685 |
-| claude-3-7-sonnet  |  0.967  | 0.487 |
+| claude-3.7 sonnet  |  0.967  | 0.487 |
 
 The isomorphic accuracy for query decomposition is higher for the 2WikiMQA dataset compared to the MuSiQue dataset across both models. GPT-4o performs slightly better than Claude-3.7 Sonnet on both datasets, achieving 0.973 accuracy for 2WikiMQA and 0.685 for MuSiQue, whereas Claude-3.7 Sonnet scores 0.967 and 0.487, respectively. 
+
+**Comments Suggestions And Typos - 1:**
+We appreciate the reviewer’s feedback on the number of baseline comparisons. In response, we have expanded our evaluation to include additional relevant baselines beyond HippoRAG and NaiveRAG, providing a more comprehensive comparison as previously shown.
+
+**Comments Suggestions And Typos - 2:**
+Thank you for your insightful feedback. To assess the broader applicability of our method, we have extended our experiments beyond GPT-4o to include Claude-3.7 Sonnet for both keyword generation and for the query-subgraph generation.
+
+
+
+The noise present in the retrieved subgraphs is a concern. How can the issue of noisy data in the retrieved subgraphs be addressed?
+The Case Study and error analysis are valuable. However, quantitatively evaluating query-graph generation would help readers better understand the proposed method and enhance its credibility.
+I have listed some of the questions in the Weaknesses.
+Some other issues:
+Table 3 needs further refinement, particularly in terms of formatting.
+In Line 319, "Bowsenet" may be a typo for "BrowseNet"?
+"predessorChunks" may be a typo for "predecessorChunks", what does it refer to?
