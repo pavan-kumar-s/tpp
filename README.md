@@ -27,7 +27,7 @@ Furthermore, we updated the BrowseNet pipeline to employ BlendedRAG for retrieva
 |  | Recall@2 | Recall@5 | Recall@2 | Recall@5 | Recall@2 | Recall@5 | Recall@2 | Recall@5 |
 | BM25 [1]   | 55.40    | 72.20    | 51.80    |  61.90    | 32.30    | 41.20    | 46.50    | 58.43   |
 | Contriever [2]  | 57.20   | 75.50   | 46.60   | 57.50   | 34.80   | 46.60   | 46.20   | 59.87   |
-| Blended RAG [3]  | 56   | 57   | 58   | 59   | 60   | 61   | 62   | 63   |
+| Blended RAG [3]  | 69.65   | 85.35   | 57.37   | 67.80   | 42.04   | 56.34   | 56.35   | 69.83   |
 | GTR  [4] | 59.40   | 73.30   | 60.20  |  67.90   | 37.40  | 49.10  | 52.33   | 63.43   |
 | Proposition [5]  | 58.70   | 71.10  | 56.40   | 63.10   | 37.60   | 49.30   | 50.9   | 61.17   |
 | RAPTOR [6]  | 58.10   | 71.20   | 46.30   | 53.80  | 35.70  |  45.30   | 46.70   | 56.77   |
