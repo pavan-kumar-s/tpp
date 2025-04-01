@@ -181,13 +181,21 @@ We appreciate the reviewer’s feedback on the number of baseline comparisons. I
 
 **Comments Suggestions And Typos - 2:**
 Thank you for your insightful feedback. To assess the broader applicability of our method, we have extended our experiments beyond GPT-4o to include Claude-3.7 Sonnet for both keyword generation and for the query-subgraph generation.
+###################################################
 
+**Comments Suggestions And Typos - 3:**
+Mitigating noise in LLM-generated text, including hallucinations, factual inaccuracies, and irrelevant content, requires strategies based on both training methodologies and inference optimization. For inference optimization, one approach is to have the LLM generate multiple possible decompositions of the multi-hop query and retrieve corresponding subgraphs for each variation. Reordering these subgraphs based on their similarity to the query-subgraphs may help filter out inconsistencies. However, the effectiveness of this method has yet to be validated. This can be noted as a limitation in the manuscript.
 
-
-The noise present in the retrieved subgraphs is a concern. How can the issue of noisy data in the retrieved subgraphs be addressed?
+**Comments Suggestions And Typos - 4:**
 The Case Study and error analysis are valuable. However, quantitatively evaluating query-graph generation would help readers better understand the proposed method and enhance its credibility.
-I have listed some of the questions in the Weaknesses.
-Some other issues:
-Table 3 needs further refinement, particularly in terms of formatting.
-In Line 319, "Bowsenet" may be a typo for "BrowseNet"?
-"predessorChunks" may be a typo for "predecessorChunks", what does it refer to?
+####################################################
+
+**Comments Suggestions And Typos - 5:**
+Thank you for your valuable suggestion. 
+1) We will revise Table 3 to enhance its formatting, ensuring consistency and better presentation of the results.
+2) We confirm that “Bowsenet” was a typo, and we will fix it to correctly read “BrowseNet.”
+3) We confirm that “predessorChunks” was a typo, and we will fix it to correctly read “predecessorChunks.”
+
+# Reviewer 3:
+We thank the reviewer for the useful comments. We will revise the manuscript that incorporates all reviewers’ comments while submitting for Camera-ready papers<br>
+**Weaknesses 1**<br>
