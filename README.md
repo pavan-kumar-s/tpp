@@ -183,7 +183,20 @@ We appreciate the reviewer’s feedback on the number of baseline comparisons. I
 
 **Comments Suggestions And Typos - 2:**
 Thank you for your insightful feedback. To assess the broader applicability of our method, we have extended our experiments beyond GPT-4o to include Claude-3.7 Sonnet for both keyword generation and for the query-subgraph generation.
-###################################################
+The following table shows the results of evaluating the keyword generation in terms of edge accuracy.
+
+|NER Model|Dataset|Edge Accuracy|
+|------|------|------|
+|GLiNER|2WikiMQA | 99.86|
+|GLiNER|MuSiQue | 91.03|
+|GPT-3.5-turbo|2WikiMQA | 99.33|
+|GPT-3.5-turbo|MuSiQue | 93.99 |
+|GPT-4o|2WikiMQA | 98.74|
+|GPT-4o|MuSiQue |  97.83|
+|Claude-3.7 Sonnet|2WikiMQA | 99.73|
+|Claude-3.7 Sonnet|MuSiQue |  |
+
+Further, the query-subgraphs generated were also evaluated for their isomorphic similarity with the query decomposition given in the benchmark datasets for both the Claude-3.7 Sonnet and gpt-4o models as shown previously.
 
 **Comments Suggestions And Typos - 3:**
 Mitigating noise in LLM-generated text, including hallucinations, factual inaccuracies, and irrelevant content, requires strategies based on both training methodologies and inference optimization. For inference optimization, one approach is to have the LLM generate multiple possible decompositions of the multi-hop query and retrieve corresponding subgraphs for each variation. Reordering these subgraphs based on their similarity to the query-subgraphs may help filter out inconsistencies. However, the effectiveness of this method has yet to be validated. This can be noted as a limitation in the manuscript.
