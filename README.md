@@ -209,14 +209,28 @@ Thank you for pointing out the issues with the structure of the paper and the pl
 will restructure the experimental section to ensure a more logical flow of information. Also, all Tables and Figures will be relocated to appear as close as possible to their corresponding paragraphs in the text. This adjustment ensures that readers can easily refer to them without having to search through other sections of the paper. We believe these changes will address your concerns and significantly enhance the readability of the manuscript. 
 
 **Weaknesses 2**<br>
-Section 2.1 is more like a preliminary knowledge rather than related work, which is widely known and stated in the instroduction. The whole related work section need to be reformed.
-############################################################
+We appreciate the reviewer’s comment regarding the organization of Section 2.1. In response, we have restructured the related work section to better align with the focus of the paper and ensure it provides a more in-depth discussion of prior research.
+**Related work:**
+The integration of knowledge graphs (KGs) with retrieval-augmented generation (RAG) systems has emerged as a pivotal strategy for addressing the limitations of conventional RAG frameworks in multi-document question answering (MD-QA). This section synthesizes advancements across two thematic areas: (1) foundational RAG architectures and their constraints in multi-hop reasoning, and (2) KG-enhanced retrieval frameworks.
 
-**Weaknesses 2**<br>
+**Limitations of Traditional RAG in Multi-Document Contexts**
+Traditional RAG systems [1][2] rely on vector similarity search to retrieve text chunks from unstructured documents, a method that struggles with multi-hop queries requiring logical connections across disparate sources. For instance, while RAG pipelines excel at answering factoid questions, they often fail to synthesize answers requiring inference over multiple documents. This shortcoming stems from the inherent linearity of vector-based retrieval, which cannot capture relational dependencies between entities or concepts spread across documents.
+**Knowledge Graph-Augmented RAG Frameworks**
+To tackle these challenges, researchers have incorporated Knowledge Graphs (KGs) into Retrieval-Augmented Generation (RAG) pipelines, leveraging their structured representation of entities and relationships. Knowledge Graph Prompting (KGP) [3] utilizes a dual-module architecture: one module constructs a KG over documents using passage similarities and structural relations, while the second module, a traversal agent, dynamically retrieves context via graph navigation. The GraphRAG [4] framework builds on this approach by encoding unstructured text into node-edge graphs, where edges capture lexical, semantic, and hierarchical relationships. By framing retrieval as a graph traversal problem, GraphRAG facilitates multi-hop reasoning through chain-of-thought prompting, resulting in a 31% reduction in hallucination rates compared to vector-only RAG. HippoRAG [5] enhances this by simulating human memory processes, integrating language models, knowledge graphs, and Personalized PageRank algorithms. It achieves state-of-the-art performance on multi-hop question answering tasks while being computationally efficient, outperforming iterative retrieval methods in both speed and cost. HippoRAG excels in entity-centric tasks and delivers state-of-the-art results on datasets like 2WikiMQA. However, for datasets requiring semantic retrieval, there is room for improvement. In response, we propose BrowseNet, which builds upon existing methods to capture both lexical and semantic relationships between multi-hop queries and passages, leading to more effective retrieval.<br>
+
+**References**
+1) Lewis, P., Perez, E., Piktus, A., Petroni, F., Karpukhin, V., Goyal, N., ... & Kiela, D. (2020). Retrieval-augmented generation for knowledge-intensive nlp tasks. Advances in neural information processing systems, 33, 9459-9474.
+2) Sawarkar, K., Mangal, A., & Solanki, S. R. (2024, August). Blended rag: Improving rag (retriever-augmented generation) accuracy with semantic search and hybrid query-based retrievers. In 2024 IEEE 7th International Conference on Multimedia Information Processing and Retrieval (MIPR) (pp. 155-161). IEEE.
+3) Wang, Y., Lipka, N., Rossi, R. A., Siu, A., Zhang, R., & Derr, T. (2024, March). Knowledge graph prompting for multi-document question answering. In Proceedings of the AAAI Conference on Artificial Intelligence (Vol. 38, No. 17, pp. 19206-19214).
+4) Edge, D., Trinh, H., Cheng, N., Bradley, J., Chao, A., Mody, A., ... & Larson, J. (2024). From local to global: A graph rag approach to query-focused summarization. arXiv preprint arXiv:2404.16130.
+5) Jimenez Gutierrez, B., Shu, Y., Gu, Y., Yasunaga, M., & Su, Y. (2024). HippoRAG: Neurobiologically Inspired Long-Term Memory for Large Language Models. Advances in Neural Information Processing Systems, 37, 59532-59569.
+
+
+**Weaknesses 3**<br>
 The difference between the proposed BrowseNet and HippoRAG seems to be the granularity of KG nodes. However, the document as KG node has been explored in https://arxiv.org/abs/2406.13372. It would be better to state the difference.
 ############################################################
 
-**Weaknesses 3**<br>
+**Weaknesses 4**<br>
 Thank you for your valuable suggestion. We acknowledge that our results may not have been presented as clearly as intended. Here, we present here the new set of baselines with which BrowseNet is compared to provide a more comprehensive justification for our conclusions.
 
 The following baselines are included in the study:
@@ -280,7 +294,7 @@ In the QA evaluation, BrowseNet with GliNER demonstrates superior performance ac
 11) Edge, D., Trinh, H., Cheng, N., Bradley, J., Chao, A., Mody, A., ... & Larson, J. (2024). From local to global: A graph rag approach to query-focused summarization. arXiv preprint arXiv:2404.16130.
 
 
-**Weaknesses 4**<br>
+**Weaknesses 5**<br>
 The analysis is a bit shallow. For example, error analysis over same samples could be done to show the percentage of various error types.
 ############################################################
 
