@@ -174,4 +174,4 @@ A similar approach is used to compute isomorphic accuracy for the 2WikiMQA corpu
 | GPT-4o | 0.973 | 0.685 |
 | claude-3-7-sonnet  |  0.967  | 0.487 |
 
-
+The isomorphic accuracy for query decomposition is higher for the 2WikiMQA dataset compared to the MuSiQue dataset across both models. GPT-4o performs slightly better than Claude-3.7 Sonnet on both datasets, achieving 0.973 accuracy for 2WikiMQA and 0.685 for MuSiQue, whereas Claude-3.7 Sonnet scores 0.967 and 0.487, respectively. 
