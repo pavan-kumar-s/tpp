@@ -289,10 +289,8 @@ We appreciate the reviewer’s suggestion to move Figure 2 to page 3. We will ma
 
 **Comments Suggestions And Typos - 2:**
 Graph density measures how close a graph is to being complete. For an undirected graph **KG** with **V** nodes (vertices) **E** edges, the density **D** is calculated as:<br>
-$**D** = \frac{2 \times |**E**|}{|**V**| \times (|**V**| - 1)}$
-
-### Formula
-The density **D** is calculated as:
+$D = \frac{2 * |E|}{|V| * (|V| - 1)}$
+$weight_{SG} = \sum_{i=1}^k \frac{similarity(V_{q,1}, V_1)}{i}$ <br>
 
 
 
