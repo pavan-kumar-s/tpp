@@ -308,5 +308,5 @@ Here $|.|$ denotes the cardinality of the set.<br>
 We will now include a formal definition and explanation of how Graph Density is computed.
 
 **Comments Suggestions And Typos - 3:**
-We appreciate the reviewer’s careful reading. We have identified the missing words in Line 399 and have corrected the sentence for clarity and completeness as shown below.
+We appreciate the reviewer’s careful reading. We have identified the missing words in Line 399 and have corrected the sentence for clarity and completeness as shown here.
 "GPT-4o model retrieves relevant entities accurately in the benchmark datasets"
