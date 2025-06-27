@@ -29,6 +29,11 @@ We thank the reviewer for this valuable comment. We agree that datasets such as 
 Results are compared only with multi-hop-within-corpus retrievers (HippoRAG-2, KAG, etc.). Standard multi-document QA baselines are absent, such as Visconde, KGP, KGP’s variant (e.g., Curiousllm), etc.
 
 **Weakness-2:**
+Results are compared only with multi-hop-within-corpus retrievers (HippoRAG-2, KAG, etc.). Standard multi-document QA baselines are absent, such as Visconde, KGP, KGP’s variant (e.g., Curiousllm), etc.
+################################################
+
+
+**Weakness-3:**
 Evaluation run on small 1000 subsets rather than full test sets.
 
 We appreciate the reviewer’s observation. To manage the computational cost of large-scale experiments, we followed the common practice adopted in prior works [1–5] and evaluated our methods on a randomly sampled subset of 1,000 questions from each validation set. Notably, the state-of-the-art baselines we compare against HippoRAG [1,2] and KAG [4] also use the same subset of the dataset. We will clarify this detail in the revised version to avoid any ambiguity.
@@ -41,12 +46,16 @@ We appreciate the reviewer’s observation. To manage the computational cost of 
 Related work lacks multi-doc related and efficient RAG related research.
 5) Press, O., Zhang, M., Min, S., Schmidt, L., Smith, N. A., & Lewis, M. (2022). Measuring and narrowing the compositionality gap in language models. arXiv preprint arXiv:2210.03350.
 
-**Weakness-3:**
+**Weakness-4:**
+Related work lacks multi-doc related and efficient RAG related research.
+
+
+**Weakness-5:**
 While the paper claims lower LLM cost, there is no concrete token / dollar comparison against iterative baselines.
 
 #########################################################
 
-**Weakness-4:**
+**Weakness-6:**
 BrowseNet extends earlier KG-enhanced RAGs (GraphRAG, HippoRAG) mainly with query-specific traversal, which limits its novelty.
 
 We thank the reviewer for highlighting the importance of distinguishing our approach from existing KG-enhanced RAG methods. While BrowseNet builds upon the general idea of incorporating knowledge graphs into retrieval-augmented generation, it introduces several key innovations that set it apart from both GraphRAG and HippoRAG:
