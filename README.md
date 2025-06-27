@@ -1,13 +1,46 @@
+# Reviewer 5j2x:
+
+**Weakness-1:**
+The presentation of this paper requires significant improvement. For example, the overall structure of the main content needs to be reorganized. Some key experiments, such as the ablation study, should be included in the main text rather than the appendix. Although the authors have added content in Section 3, its readability needs further polishing.
+
+**Weakness-2:**
+Some critical analysis are missing. For example, while BrowseNet shows improvements in knowledge retrieval, its performance on question answering drops, which is not adequately discussed in the paper.
+
+**Comments Suggestions And Typos-1:**
+The reliability of the Isomorphic accuracy metric needs to be further clarified.
+
+**Comments Suggestions And Typos-2:**
+Could you provide further clarification on how the datasets are partitioned in the experiments?
+
+**Comments Suggestions And Typos-3:**
+BrowseNet shows improvement in knowledge retrieval; however, why does its performance on question answering decrease? Please elaborate on the case of 2WikiMQA.
+
+**Comments Suggestions And Typos-4:**
+Further analysis is needed to explain why BrowseNet does not show significant improvement in overall question answering performance.
+
+**Comments Suggestions And Typos-5:**
+The implementation details are not provided in this submission, making it difficult to evaluate the backbone model used in BrowseNet.
+
+
 # Reviewer BHPP: 
 We thank the reviewer for their valuable feedback. We will revise the manuscript to incorporate all reviewer comments in the camera-ready submission.
 
 **Weakness-1:**
 W1: The results show that the graph constructed by the new method has certain improvements in its own performance and retrieval performance. Is it necessary to consider the difference in construction cost compared with the traditional method?
 
+
+
+**Weakness-2:**
 W2: More experiments needed (For example, using different LLMs).
 
 
 
+**Comments Suggestions And Typos-1:**
+D1: As a compound noun, the correct hyphenation for "work of art" should be "work-of-art" rather than "work_of_art".
+
+
+**Comments Suggestions And Typos-2:**
+D2: It is inappropriate to have both "Equation + numeral" and "Eq. + numeral" following "As shown in". It is preferable to unify the format. Additionally, the numerals in both cases are not enclosed in parentheses.
 
 
 
@@ -49,6 +82,7 @@ Related work lacks multi-doc related and efficient RAG related research.
 **Weakness-4:**
 Related work lacks multi-doc related and efficient RAG related research.
 
+#########################################################
 
 **Weakness-5:**
 While the paper claims lower LLM cost, there is no concrete token / dollar comparison against iterative baselines.
