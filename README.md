@@ -1,5 +1,20 @@
+# Reviewer BHPP: 
+We thank the reviewer for their valuable feedback. We will revise the manuscript to incorporate all reviewer comments in the camera-ready submission.
+
+**Weakness-1:**
+W1: The results show that the graph constructed by the new method has certain improvements in its own performance and retrieval performance. Is it necessary to consider the difference in construction cost compared with the traditional method?
+
+W2: More experiments needed (For example, using different LLMs).
+
+
+
+
+
+
+
+
 # Reviewer 6bMr: 
-We thank the reviewer for the useful comments. We will revise the manuscript that incorporates all reviewers’ comments while submitting for Camera-ready papers
+We thank the reviewer for their valuable feedback. We will revise the manuscript accordingly to address all reviewer comments in the camera-ready submission.
 
 **Weakness-1:**
 Benchmarks are not multi-document QA. HotpotQA, 2WikiMQA and MuSiQue require reasoning across paragraphs drawn from Wikipedia, but all evidence ultimately resides in one monolithic source. To claim multi-document QA the system should be evaluated on datasets where answers require synthesising separate primary documents. For example, FanOutQA, WikiHowQA, Narrative QA, MultiDoc2Dial, VisDoMBench, etc.
@@ -28,6 +43,8 @@ Related work lacks multi-doc related and efficient RAG related research.
 
 **Weakness-3:**
 While the paper claims lower LLM cost, there is no concrete token / dollar comparison against iterative baselines.
+
+#########################################################
 
 **Weakness-4:**
 BrowseNet extends earlier KG-enhanced RAGs (GraphRAG, HippoRAG) mainly with query-specific traversal, which limits its novelty.
