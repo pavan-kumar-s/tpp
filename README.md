@@ -33,6 +33,17 @@ W1: The results show that the graph constructed by the new method has certain im
 **Weakness-2:**
 W2: More experiments needed (For example, using different LLMs).
 
+We thank the reviewer for the suggestion. For the browseNet pipeline, the LLMs have been used at three distinct places: Keyword generation, Query decomposition, and Answer generation. In the manuscript, the effect of distinct LLMs on keyword generation has been summarized in the Tables-5,6,10 in terms of Graph density, Edge accuracy, Retrieval recall, and No. of entities. Also, LLM contribution on query decomposition has been summarised in Tables-4,6 in terms of isomorphic accuracy and retrieval recall. Hereby, we summarize the results for the usage of distinct LLMs in answer generation in terms of exact match (EM) and F1-score (F1).
+
+|    LLM    | HotpotQA ||2WikiMQA||MuSiQue||Average||
+|------|------|------|------|------|------|------|------|------|
+|  | EM | F1 | EM | F1 | EM | F1 | EM | F1 |
+| gpt-4o-mini  |  62.20  | 77.69   | 63.90   | 74.50  | 41.60  | 54.08    | 55.90   |  68.76  |
+| gpt-3.5-turbo  | 58.80  | 73.81  | 47.70   | 59.57   | 37.40   | 49.77  |47.97    | 61.05   |
+| gpt-4.1-mini | 63.20   | 79.21   | 64.50   | 74.43   | 42.70   | 55.07   | 56.80   | 69.57   |
+| deepseek-chat-v3   |62.20   | 78.91   | 66.10   | 75.86   | 43.50   | 56.25   | 57.27   | 70.34   |
+| gemini-2.0-flash   | 63.40   | 78.00  | 62.10   | 70.30   | 38.10   | 47.37   | 54.53   | 65.22   |
+
 
 
 **Comments Suggestions And Typos-1:**
