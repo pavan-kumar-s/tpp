@@ -1,7 +1,13 @@
 # Reviewer 5j2x:
+We thank the reviewer for their valuable feedback. We will revise the manuscript to incorporate all reviewer comments in the camera-ready submission.
 
 **Weakness-1:**
 The presentation of this paper requires significant improvement. For example, the overall structure of the main content needs to be reorganized. Some key experiments, such as the ablation study, should be included in the main text rather than the appendix. Although the authors have added content in Section 3, its readability needs further polishing.
+
+We thank the reviewer for the constructive feedback regarding the presentation and organization of the paper. In the revised version, we will take the following steps to improve clarity and structure:
+Reorganization of content: We will revisit the flow of the main sections to ensure a more coherent narrative and better separation between the method, implementation details, and evaluation results.
+Ablation studies: We agree that the ablation studies provide important insights. Accordingly, we will move the most relevant ablation results from the appendix into the main text to highlight their significance.
+We believe these revisions will significantly improve the presentation of our work.
 
 **Weakness-2:**
 Some critical analysis are missing. For example, while BrowseNet shows improvements in knowledge retrieval, its performance on question answering drops, which is not adequately discussed in the paper.
@@ -28,7 +34,7 @@ We thank the reviewer for their valuable feedback. We will revise the manuscript
 **Weakness-1:**
 W1: The results show that the graph constructed by the new method has certain improvements in its own performance and retrieval performance. Is it necessary to consider the difference in construction cost compared with the traditional method?
 
-
+####################################
 
 **Weakness-2:**
 W2: More experiments needed (For example, using different LLMs).
