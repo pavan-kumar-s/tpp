@@ -33,7 +33,11 @@ W1: The results show that the graph constructed by the new method has certain im
 **Weakness-2:**
 W2: More experiments needed (For example, using different LLMs).
 
-We thank the reviewer for the suggestion. For the browseNet pipeline, the LLMs have been used at three distinct places: Keyword generation, Query decomposition, and Answer generation. In the manuscript, the effect of distinct LLMs on keyword generation has been summarized in the Tables-5,6,10 in terms of Graph density, Edge accuracy, Retrieval recall, and No. of entities. Also, LLM contribution on query decomposition has been summarised in Tables-4,6 in terms of isomorphic accuracy and retrieval recall. Hereby, we summarize the results for the usage of distinct LLMs in answer generation in terms of exact match (EM) and F1-score (F1).
+We thank the reviewer for the thoughtful suggestion.
+In the BrowseNet pipeline, LLMs are employed at three distinct stages: (1) keyword generation, (2) query decomposition, and (3) answer generation.
+In the manuscript, we have already presented the impact of using different LLMs for keyword generation in Tables 5, 6, and 10, measured in terms of graph density, edge accuracy, retrieval recall, and number of entities. Similarly, the impact of LLMs on query decomposition is reported in Tables 4 and 6 through metrics such as isomorphic accuracy and retrieval recall.
+
+Below, we now summarize the impact of various LLMs on answer generation, evaluated using Exact Match (EM) and F1-score across three benchmark datasets (HotpotQA, 2WikiMQA, MuSiQue):
 
 |    LLM    | HotpotQA ||2WikiMQA||MuSiQue||Average||
 |------|------|------|------|------|------|------|------|------|
@@ -44,15 +48,21 @@ We thank the reviewer for the suggestion. For the browseNet pipeline, the LLMs h
 | deepseek-chat-v3   |62.20   | 78.91   | **66.10**   | **75.86**   |**43.50**   | **56.25**   | **57.27**   | **70.34**   |
 | gemini-2.0-flash   | **63.40**   | 78.00  | 62.10   | 70.30   | 38.10   | 47.37   | 54.53   | 65.22   |
 
-The results presented in the manuscipt uses gpt-4o-mini. The same input and prompt has been given to all the above mentioned LLMs. 
+The results reported in the manuscript are based on gpt-4o-mini. For fairness, all LLMs above were evaluated using the same input and prompt format.
+
+From the table, it is evident that the choice of LLM significantly impacts answer generation performance with up to a 10% difference in F1-score across models. This reinforces the importance of selecting the appropriate LLM for downstream QA tasks.
+These results will be incorporated into the revised version of the paper to provide a more comprehensive evaluation of the impact of different LLMs on answer generation.
 
 
 **Comments Suggestions And Typos-1:**
 D1: As a compound noun, the correct hyphenation for "work of art" should be "work-of-art" rather than "work_of_art".
 
+We thank the reviewer for pointing this out. We will correct the phrasing and use the appropriate hyphenated form “work-of-art” in the revised manuscript.
 
 **Comments Suggestions And Typos-2:**
 D2: It is inappropriate to have both "Equation + numeral" and "Eq. + numeral" following "As shown in". It is preferable to unify the format. Additionally, the numerals in both cases are not enclosed in parentheses.
+
+We thank the reviewer for highlighting this inconsistency. We will revise the manuscript to ensure a consistent format throughout. Specifically, we will standardize the usage to “Eq. (n)” and ensure that all equation references include the numeral enclosed in parentheses, as per standard conventions.
 
 
 
