@@ -12,8 +12,26 @@ We believe these revisions will significantly improve the presentation of our wo
 **Weakness-2:**
 Some critical analysis are missing. For example, while BrowseNet shows improvements in knowledge retrieval, its performance on question answering drops, which is not adequately discussed in the paper.
 
+We thank the reviewer for this valuable observation. This feedback helped us investigate the gap between improved retrieval quality and answer generation performance more carefully.
+
+Upon further analysis, we found that the quality of the final answer is significantly influenced by the choice of the LLM used in the answer generation stage of the pipeline. In the original submission, we used gpt-4o-mini for all QA outputs. To better understand this impact, we evaluated the system using different LLMs for the answer generation module, keeping the retrieval and decomposition stages fixed. The results are presented below:
+
+|    LLM    | HotpotQA ||2WikiMQA||MuSiQue||Average||
+|------|------|------|------|------|------|------|------|------|
+|  | EM | F1 | EM | F1 | EM | F1 | EM | F1 |
+| gpt-4o-mini  |  62.20  | 77.69   | 63.90   | 74.50  | 41.60  | 54.08    | 55.90   |  68.76  |
+| gpt-3.5-turbo  | 58.80  | 73.81  | 47.70   | 59.57   | 37.40   | 49.77  |47.97    | 61.05   |
+| gpt-4.1-mini | 63.20   | **79.21**   | 64.50   | 74.43   | 42.70   | 55.07   | 56.80   | 69.57   |
+| deepseek-chat-v3   |62.20   | 78.91   | **66.10**   | **75.86**   |**43.50**   | **56.25**   | **57.27**   | **70.34**   |
+| gemini-2.0-flash   | **63.40**   | 78.00  | 62.10   | 70.30   | 38.10   | 47.37   | 54.53   | 65.22   |
+
+These results indicate that while the retrieval and reasoning components provide high-quality evidence, the final QA performance is sensitive to the language model used. We observed nearly a 10-point difference in average F1 score between the best and least effective LLMs. We will include this analysis in the revised version to provide a more complete picture of the QA performance and clarify that the observed drop in some results was partly due to the LLM selection rather than limitations in retrieval quality.
+
+
 **Comments Suggestions And Typos-1:**
 The reliability of the Isomorphic accuracy metric needs to be further clarified.
+
+We acknowledge that isomorphic accuracy, while helpful, does not fully capture the semantic correctness of a decomposed query. However, it serves as a useful proxy metric for evaluating the structural alignment between the predicted and reference query graphs. We would like to clarify that isomorphic accuracy primarily reflects how closely the structure of the decomposed subqueries matches the ground truth in terms of nodes and relation linkage. It is a strict, binary metric-even a single edge mismatch results in a score of zero, which makes it a conservative measure of structural accuracy. There can be cases where the predicted subquery is structurally similar to the gold standard but differs in semantics, or vice versa.
 
 **Comments Suggestions And Typos-2:**
 Could you provide further clarification on how the datasets are partitioned in the experiments?
