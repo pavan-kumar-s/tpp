@@ -31,3 +31,13 @@ While the paper claims lower LLM cost, there is no concrete token / dollar compa
 
 **Weakness-4:**
 BrowseNet extends earlier KG-enhanced RAGs (GraphRAG, HippoRAG) mainly with query-specific traversal, which limits its novelty.
+
+**GraphRAG Differences:**
+1) GraphRAG constructs hierarchical community structures and generates community summaries, while BrowseNet builds lexically-connected graphs without hierarchical clustering
+2) GraphRAG requires extensive LLM processing during indexing for entity and relationship extraction, whereas BrowseNet uses lightweight NER and similarity-based linking
+3) GraphRAG's retrieval relies on community summaries for global search, while BrowseNet performs dynamic subgraph traversal
+
+**HippoRAG Differences:**
+1) HippoRAG uses schemaless knowledge graphs with Open Information Extraction and synonymy linking via retrieval encoders, while BrowseNet employs structured lexical relationships with ColBERTv2-based entity linking
+2) HippoRAG's retrieval mechanism centers on Personalized PageRank for single-step traversal, whereas BrowseNet implements multi-step beam search with topological ordering
+3) HippoRAG requires both NER and relation extraction, while BrowseNet needs only NER, reducing complexity
