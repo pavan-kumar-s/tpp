@@ -81,11 +81,15 @@ We thank the reviewer for this valuable comment. We agree that datasets such as 
 1) Yoon, C., Lee, T., Hwang, H., Jeong, M., & Kang, J. (2024). Compact: Compressing retrieved documents actively for question answering. arXiv preprint arXiv:2407.09014.
 2) Yang, Z., Zhu, Z., & Zhu, J. (2025, April). CuriousLLM: Elevating multi-document question answering with llm-enhanced knowledge graph reasoning. In Proceedings of the 2025 Conference of the Nations of the Americas Chapter of the Association for Computational Linguistics: Human Language Technologies (Volume 3: Industry Track) (pp. 274-286).
 3) Wang, Y., Lipka, N., Rossi, R. A., Siu, A., Zhang, R., & Derr, T. (2024, March). Knowledge graph prompting for multi-document question answering. In Proceedings of the AAAI Conference on Artificial Intelligence (Vol. 38, No. 17, pp. 19206-19214).
-Results are compared only with multi-hop-within-corpus retrievers (HippoRAG-2, KAG, etc.). Standard multi-document QA baselines are absent, such as Visconde, KGP, KGP’s variant (e.g., Curiousllm), etc.
 
 **Weakness-2:**
 Results are compared only with multi-hop-within-corpus retrievers (HippoRAG-2, KAG, etc.). Standard multi-document QA baselines are absent, such as Visconde, KGP, KGP’s variant (e.g., Curiousllm), etc.
-################################################
+
+We appreciate the reviewer’s suggestion to include comparisons with standard multi-document QA baselines. Our current evaluation is focused on methods designed for multi-hop reasoning within a single corpus, such as HippoRAG-2 and KAG, in order to maintain consistency with the properties of the datasets used (HotpotQA, 2WikiMQA, MuSiQue) and to ensure a fair comparison with prior work.
+
+That said, we acknowledge the importance of evaluating against baselines tailored for true multi-document QA.
+
+We acknowledge, however, that including baselines tailored for true multi-document QA would strengthen the empirical evaluation, especially for settings where information must be aggregated from distinct documents. In the revised version, we will (1) clarify the rationale behind our current baseline selection, and (2) discuss the limitations this imposes.
 
 
 **Weakness-3:**
@@ -104,7 +108,11 @@ Related work lacks multi-doc related and efficient RAG related research.
 **Weakness-4:**
 Related work lacks multi-doc related and efficient RAG related research.
 
-#########################################################
+We would like to clarify that the scope of our work is specifically focused on multi-hop QA, as reflected in the choice of both our datasets (HotpotQA, 2WikiMQA, MuSiQue) and our baselines (e.g., HippoRAG-2, KAG). These benchmarks require reasoning across multiple passages, rather than synthesizing/connecting information from entirely distinct documents.
+
+For this reason, we chose not to include unrelated multi-document QA methods such as Visconde or CuriousLLM in our comparison or related work, as they are designed for a different task setting with different assumptions and evaluation protocols.
+
+We will clarify this design choice and scope constraint in the revised manuscript to avoid misunderstanding and to make our positioning more explicit.
 
 **Weakness-5:**
 While the paper claims lower LLM cost, there is no concrete token / dollar comparison against iterative baselines.
