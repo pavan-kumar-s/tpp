@@ -8,7 +8,8 @@ We thank the reviewer for the constructive feedback regarding the presentation a
 
 Reorganization of content: We will revisit the flow of the main sections to ensure a more coherent narrative and better separation between the method, implementation details, evaluation results, and ablation studies.
 
-Ablation studies: We agree that the ablation studies are critical for understanding the contribution of each component. Our manuscript includes ablations at two levels: KG accuracy-based ablation, and retrieval recall-based ablation. We also plan to include a new ablation study on answer generation, as outlined in our response to Weakness-2. To reflect their importance, we will move the recall-based ablation results from the appendix into the main paper, and present the KG accuracy-based and answer generation ablations in the Appendix, with clear references in the main text.
+Ablation studies: We agree that the ablation studies are critical for understanding the contribution of each component. Our manuscript includes ablations at two levels: KG accuracy-based ablation and retrieval recall-based ablation. We will
+include a new ablation study on answer generation, as outlined in our response to Weakness-2. To reflect their importance, we will move the recall-based ablation results from the appendix into the main paper, and present the KG accuracy-based and answer generation ablations in the Appendix, with clear references in the main text.
 
 
 We believe these revisions will significantly improve the presentation of our work.
