@@ -45,6 +45,20 @@ Further analysis is needed to explain why BrowseNet does not show significant im
 **Comments Suggestions And Typos-5:**
 The implementation details are not provided in this submission, making it difficult to evaluate the backbone model used in BrowseNet.
 
+The following are the implementation details of the BrowseNet pipeline. 
+
+Named Entity Recognition (NER):
+We use the GliNER model for named entity recognition during the graph construction phase. All experiments use the model’s default configuration, including a similarity threshold of 0.5 for linking extracted entities.
+
+Chunk Embeddings:
+We employ the NV-Embed-v2 model to get the embeddings. The output embedding dimensionality is set to the model’s default value of 4096.
+
+Language Models (LLMs):
+BrowseNet utilizes large language models at three stages: keyword generation (optional), query decomposition, and answer generation. All LLMs are queried using a temperature of 0 to ensure deterministic responses. Also, gpt-4o-mini is used for answer generation in the reported results.
+
+Hardware and Environment:
+All experiments were conducted on a server with an NVIDIA A100 GPU and 512 GB of RAM. Model inference and graph operations were implemented using Python with standard libraries (e.g., PyTorch, Hugging Face Transformers, NetworkX).
+
 
 # Reviewer BHPP: 
 We thank the reviewer for their valuable feedback. We will revise the manuscript to incorporate all reviewer comments in the camera-ready submission.
