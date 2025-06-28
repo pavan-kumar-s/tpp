@@ -25,7 +25,7 @@ Upon further analysis, we found that the quality of the final answer is signific
 | deepseek-chat-v3   |62.20   | 78.91   | **66.10**   | **75.86**   |**43.50**   | **56.25**   | **57.27**   | **70.34**   |
 | gemini-2.0-flash   | **63.40**   | 78.00  | 62.10   | 70.30   | 38.10   | 47.37   | 54.53   | 65.22   |
 
-These results indicate that while the retrieval and reasoning components provide high-quality evidence, the final QA performance is sensitive to the language model used. We observed nearly a 10-point difference in average F1 score between the best and least effective LLMs. We will include this analysis in the revised version to provide a more complete picture of the QA performance and clarify that the observed drop in some results was partly due to the LLM selection rather than limitations in retrieval quality.
+These results indicate that while the retrieval and reasoning components provide high-quality evidence, the final QA performance is sensitive to the language model used. We observed nearly a 10-point difference in average F1 score between the best and least effective LLMs. We will include this analysis in the camera-ready version to provide a more complete picture of the QA performance and clarify that the observed drop in some results was partly due to the LLM selection rather than limitations in retrieval quality.
 
 
 **Comments Suggestions And Typos-1:**
@@ -62,7 +62,7 @@ In both cases, the model provides reasonable and arguably correct answers, but t
 **Comments Suggestions And Typos-4:**
 Further analysis is needed to explain why BrowseNet does not show significant improvement in overall question answering performance.
 
-As discussed in our previous responses, we conducted additional analysis to investigate this issue. Specifically, we examined the impact of the LLM used in the answer generation stage, analyzed cases with high retrieval recall but low answer accuracy, and identified instances where semantically correct answers were penalized due to strict string matching. These insights provide a clearer explanation for the observed gap between improved retrieval and QA performance. We will summarize this analysis in the revised manuscript to ensure it is presented.
+As discussed in our previous responses, we conducted additional analysis to investigate this issue. Specifically, we examined the impact of the LLM used in the answer generation stage, analyzed cases with high retrieval recall but low answer accuracy, and identified instances where semantically correct answers were penalized due to strict string matching. These insights provide a clearer explanation for the observed gap between improved retrieval and QA performance. We will summarize this analysis in the camera-ready manuscript to ensure it is presented.
 
 **Comments Suggestions And Typos-5:**
 The implementation details are not provided in this submission, making it difficult to evaluate the backbone model used in BrowseNet.
@@ -127,7 +127,7 @@ These results will be incorporated into the revised version of the paper to prov
 **Comments Suggestions And Typos-1:**
 D1: As a compound noun, the correct hyphenation for "work of art" should be "work-of-art" rather than "work_of_art".
 
-We thank the reviewer for pointing this out. We will correct the phrasing and use the appropriate hyphenated form “work-of-art” in the revised manuscript.
+We thank the reviewer for pointing this out. We will correct the phrasing and use the appropriate hyphenated form "work-of-art" in the camera-ready version of the manuscript.
 
 **Comments Suggestions And Typos-2:**
 D2: It is inappropriate to have both "Equation + numeral" and "Eq. + numeral" following "As shown in". It is preferable to unify the format. Additionally, the numerals in both cases are not enclosed in parentheses.
@@ -187,14 +187,19 @@ We will clarify this design choice and scope constraint in the revised manuscrip
 **Weakness-5:**
 While the paper claims lower LLM cost, there is no concrete token / dollar comparison against iterative baselines.
 
-Here we provide the token/dollar comparison against the single-step retrieval baseline, HippoRAG-2. This compares the cost from indexing to retrieval.
+We appreciate the reviewer’s comment and agree that a quantitative comparison of LLM-related costs adds clarity to our claim of improved efficiency. Below, we provide a concrete token-level and dollar-level cost analysis comparing BrowseNet with the state-of-the-art retrieval baseline, HippoRAG-2, on the HotpotQA benchmark dataset.
 
+This comparison includes the full pipeline cost, from indexing to retrieval, using gpt-4o-mini in both systems. The pricing model used is based on OpenAI's current API rates: $0.15 per 1M input tokens and $0.60 per 1M output tokens.
 
 |     | HippoRAG-2 | BrowseNet |
 |--------|------|------|
 |Input tokens|5880618|249503|
 |Output tokens|2110007|44641|
 |Total tokens|7990625|294144|
+
+As shown, BrowseNet is approximately 33× more cost-efficient than HippoRAG-2 while achieving state-of-the-art retrieval performance. This significant reduction in LLM-related cost is primarily due to BrowseNet's design, which minimizes LLM use during indexing and avoids expensive relation extraction or summary generation steps.
+
+We will include this token-level and cost-level analysis in the camera-ready version of the manuscript to substantiate our efficiency claims.
 
 
 **Weakness-6:**
