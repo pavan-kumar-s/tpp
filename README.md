@@ -50,11 +50,11 @@ We thank the reviewer for the opportunity to clarify this aspect of our experime
 
 **References**
 1) Gutiérrez, B. J., Shu, Y., Gu, Y., Yasunaga, M., & Su, Y. (2024, January). Hipporag: Neurobiologically inspired long-term memory for large language models. In The Thirty-eighth Annual Conference on Neural Information Processing Systems.
-2) Gutiérrez, B. J., Shu, Y., Qi, W., Zhou, S., & Su, Y. (2025). From rag to memory: Non-parametric continual learning for large language models. arXiv preprint arXiv:2502.14802.
+2) Gutiérrez, B. J., Shu, Y., Qi, W., Zhou, S., & Su, Y. (2025). From rag to memory: Non-parametric continual learning for large language models. In the Forty-Second International Conference on Machine Learning.
 3) Trivedi, H., Balasubramanian, N., Khot, T., & Sabharwal, A. (2022). Interleaving retrieval with chain-of-thought reasoning for knowledge-intensive multi-step questions. arXiv preprint arXiv:2212.10509.
-4) Liang, L., Bo, Z., Gui, Z., Zhu, Z., Zhong, L., Zhao, P., ... & Chen, H. (2025, May). Kag: Boosting llms in professional domains via knowledge augmented generation. In Companion Proceedings of the ACM on Web Conference 2025 (pp. 334-343).
+4) Liang, L., Bo, Z., Gui, Z., Zhu, Z., Zhong, L., Zhao, P., ... & Chen, H. (2025, May). Kag: Boosting LLMs in professional domains via knowledge augmented generation. In Companion Proceedings of the ACM on Web Conference 2025 (pp. 334-343).
 Related work lacks multi-doc related and efficient RAG related research.
-5) Press, O., Zhang, M., Min, S., Schmidt, L., Smith, N. A., & Lewis, M. (2022). Measuring and narrowing the compositionality gap in language models. arXiv preprint arXiv:2210.03350.
+5) Press, O., Zhang, M., Min, S., Schmidt, L., Smith, N. A., & Lewis, M. (2023). Measuring and narrowing the compositionality gap in language models. In EMNLP.
 
 **Action:** We will include an appropriate response in Section 4.1 in the camera-ready version of the paper
 
@@ -113,9 +113,9 @@ In particular, the following design choices contribute to BrowseNet’s cost-eff
 As stated in the manuscript, "our best-performing model does not require any LLM-generated text during the offline indexing phase, making it both cost-efficient and less prone to noise." Unlike traditional approaches that rely heavily on large language models for entity or relation generation, BrowseNet only uses lightweight Named Entity Recognition (NER) via GLiNER during indexing. Also, it can be seen from the Tables-5,6 that the performance of GliNER is similar to that of the generative models like gpt-4o and Claude-3.7-Sonnet. Hence, in the final results presented, no generative models were used to generate intermediate graph structures or summaries during the indexing stage. 
 
 2) Simplified Knowledge Graph Construction:
-Traditional methods such as HippoRAG and KAG involve both Named Entity Recognition (NER) and Relation Extraction (RE) pipelines, often requiring fine-tuned models or LLM APIs. This substantially increases computational cost and monetary cost (especially with LLM-based APIs). In contrast, BrowseNet by design requires only NER, reducing the overall construction pipeline complexity by approximately 50% still achieving the state-of-the-art results. This design significantly lowers both preprocessing time and infrastructure requirements, making BrowseNet more scalable and deployable in real-world settings.
+Traditional methods such as HippoRAG and KAG involve both Named Entity Recognition (NER) and Relation Extraction (RE) pipelines, often requiring fine-tuned models or LLM APIs. This substantially increases computational cost and monetary cost (especially with LLM-based APIs). In contrast, BrowseNet is designed to use only NER, such that it achieves the state-of-the-art results and also reduces the overall construction pipeline complexity by approximately 50%. This design novelty significantly lowers both preprocessing time and infrastructure requirements, making BrowseNet more scalable and deployable in real-world settings.
 
-**Action:** We will revise the manuscript to make these cost-related benefits more explicit in the comparison with prior graph-based retrieval systems in the Appendix section.
+**Action:** We will revise the manuscript to make these cost-related benefits more explicit in the comparison with prior graph-based retrieval systems in the Introduction and Appendix sections.
 
 **Weakness-2:**
 W2: More experiments needed (For example, using different LLMs).
@@ -124,7 +124,7 @@ We thank the reviewer for the thoughtful suggestion.
 In the BrowseNet pipeline, LLMs are employed at three distinct stages: (1) keyword generation, (2) query decomposition, and (3) answer generation.
 In the manuscript, we have already presented the impact of using different LLMs for keyword generation in Tables 5, 6, and 10, measured in terms of graph density, edge accuracy, retrieval recall, and number of entities. Similarly, the impact of LLMs on query decomposition is reported in Tables 4 and 6 through metrics such as isomorphic accuracy and retrieval recall.
 
-Below, we now summarize the impact of various LLMs on answer generation, evaluated using Exact Match (EM) and F1-score across three benchmark datasets (HotpotQA, 2WikiMQA, MuSiQue):
+Below, we now summarize the impact of various LLMs on answer generation, evaluated using Exact Match (EM) and F1-score (F1) across three benchmark datasets (HotpotQA, 2WikiMQA, MuSiQue):
 
 |    LLM    | HotpotQA ||2WikiMQA||MuSiQue||Average||
 |------|------|------|------|------|------|------|------|------|
@@ -167,35 +167,36 @@ We thank the reviewer for their valuable feedback. We will revise the manuscript
 Benchmarks are not multi-document QA. HotpotQA, 2WikiMQA and MuSiQue require reasoning across paragraphs drawn from Wikipedia, but all evidence ultimately resides in one monolithic source. To claim multi-document QA the system should be evaluated on datasets where answers require synthesising separate primary documents. For example, FanOutQA, WikiHowQA, Narrative QA, MultiDoc2Dial, VisDoMBench, etc.
 
 
-We thank the reviewer for this valuable comment. We agree that datasets such as FanOutQA and MultiDoc2Dial better reflect scenarios where answers must be synthesized from truly distinct primary documents. In our work, we followed the terminology used in prior literature [1–3], where HotpotQA, 2WikiMQA, and MuSiQue have been widely referred to as multi-document QA benchmarks, primarily due to their requirement for reasoning across multiple passages, albeit sourced from a single repository like Wikipedia. We will clarify this distinction more explicitly in the revised version to avoid any potential confusion.
+We thank the reviewer for this valuable comment. We agree that datasets such as FanOutQA and MultiDoc2Dial better reflect scenarios where answers must be synthesized from truly distinct primary documents. In our work, we followed the terminology used in prior literature [1–3], where HotpotQA, 2WikiMQA, and MuSiQue have been widely referred to as multi-document QA benchmarks, primarily due to their requirement for reasoning across multiple passages, albeit sourced from a single repository like Wikipedia. 
 
 **References:**
 1) Yoon, C., Lee, T., Hwang, H., Jeong, M., & Kang, J. (2024). Compact: Compressing retrieved documents actively for question answering. arXiv preprint arXiv:2407.09014.
 2) Yang, Z., Zhu, Z., & Zhu, J. (2025, April). CuriousLLM: Elevating multi-document question answering with llm-enhanced knowledge graph reasoning. In Proceedings of the 2025 Conference of the Nations of the Americas Chapter of the Association for Computational Linguistics: Human Language Technologies (Volume 3: Industry Track) (pp. 274-286).
 3) Wang, Y., Lipka, N., Rossi, R. A., Siu, A., Zhang, R., & Derr, T. (2024, March). Knowledge graph prompting for multi-document question answering. In Proceedings of the AAAI Conference on Artificial Intelligence (Vol. 38, No. 17, pp. 19206-19214).
 
+**Action:** We will clarify this distinction in terminology more explicitly and emphasize multi-hop QA in the camera-ready version to avoid any potential confusion.
+
 **Weakness-2:**
 Results are compared only with multi-hop-within-corpus retrievers (HippoRAG-2, KAG, etc.). Standard multi-document QA baselines are absent, such as Visconde, KGP, KGP’s variant (e.g., Curiousllm), etc.
 
-We appreciate the reviewer’s suggestion to include comparisons with standard multi-document QA baselines. Our current evaluation is focused on methods designed for multi-hop reasoning within a single corpus, such as HippoRAG-2 and KAG, in order to maintain consistency with the properties of the datasets used (HotpotQA, 2WikiMQA, MuSiQue) and to ensure a fair comparison with prior work.
+We appreciate the reviewer’s suggestion to include comparisons with standard multi-document QA baselines. Our current evaluation is focused on methods designed for multi-hop reasoning within a single corpus, such as HippoRAG-2 and KAG, in order to maintain consistency with the properties of the datasets used (HotpotQA, 2WikiMQA, MuSiQue) and to ensure a fair comparison with prior work. We acknowledge, however, that including baselines tailored for true multi-document QA would strengthen the empirical evaluation, especially for settings where information must be aggregated from distinct documents. 
 
-That said, we acknowledge the importance of evaluating against baselines tailored for true multi-document QA.
-
-We acknowledge, however, that including baselines tailored for true multi-document QA would strengthen the empirical evaluation, especially for settings where information must be aggregated from distinct documents. In the revised version, we will (1) clarify the rationale behind our current baseline selection, and (2) discuss the limitations this imposes.
-
+**Action:** In the revised version, we will clarify the rationale behind our current baseline selection in Section 4.2 and discuss the limitations this imposes in the Limitations section.
 
 **Weakness-3:**
 Evaluation run on small 1000 subsets rather than full test sets.
 
-We appreciate the reviewer’s observation. To manage the computational cost of large-scale experiments, we followed the common practice adopted in prior works [1–5] and evaluated our methods on a randomly sampled subset of 1,000 questions from each validation set. Notably, the state-of-the-art baselines we compare against HippoRAG [1,2] and KAG [4] also use the same subset of the dataset. We will clarify this detail in the revised version to avoid any ambiguity.
+We appreciate the reviewer’s observation. To manage the computational cost of large-scale experiments, we followed the common practice adopted in prior works [1–5] and evaluated our methods on a randomly sampled subset of 1,000 questions from each validation set. Notably, the state-of-the-art baselines we compare against HippoRAG [1,2] and KAG [4] also use the same subset of the dataset.
 
 **References**
 1) Gutiérrez, B. J., Shu, Y., Gu, Y., Yasunaga, M., & Su, Y. (2024, January). Hipporag: Neurobiologically inspired long-term memory for large language models. In The Thirty-eighth Annual Conference on Neural Information Processing Systems.
-2) Gutiérrez, B. J., Shu, Y., Qi, W., Zhou, S., & Su, Y. (2025). From rag to memory: Non-parametric continual learning for large language models. arXiv preprint arXiv:2502.14802.
+2) Gutiérrez, B. J., Shu, Y., Qi, W., Zhou, S., & Su, Y. (2025). From rag to memory: Non-parametric continual learning for large language models. In the Forty-Second International Conference on Machine Learning.
 3) Trivedi, H., Balasubramanian, N., Khot, T., & Sabharwal, A. (2022). Interleaving retrieval with chain-of-thought reasoning for knowledge-intensive multi-step questions. arXiv preprint arXiv:2212.10509.
-4) Liang, L., Bo, Z., Gui, Z., Zhu, Z., Zhong, L., Zhao, P., ... & Chen, H. (2025, May). Kag: Boosting llms in professional domains via knowledge augmented generation. In Companion Proceedings of the ACM on Web Conference 2025 (pp. 334-343).
+4) Liang, L., Bo, Z., Gui, Z., Zhu, Z., Zhong, L., Zhao, P., ... & Chen, H. (2025, May). Kag: Boosting LLMs in professional domains via knowledge augmented generation. In Companion Proceedings of the ACM on Web Conference 2025 (pp. 334-343).
 Related work lacks multi-doc related and efficient RAG related research.
-5) Press, O., Zhang, M., Min, S., Schmidt, L., Smith, N. A., & Lewis, M. (2022). Measuring and narrowing the compositionality gap in language models. arXiv preprint arXiv:2210.03350.
+5) Press, O., Zhang, M., Min, S., Schmidt, L., Smith, N. A., & Lewis, M. (2023). Measuring and narrowing the compositionality gap in language models. In EMNLP.
+   
+**Action:** We will clarify this detail in Section 4.1 in the camera-ready version to avoid any ambiguity.
 
 **Weakness-4:**
 Related work lacks multi-doc related and efficient RAG related research.
@@ -204,7 +205,7 @@ We would like to clarify that the scope of our work is specifically focused on m
 
 For this reason, we chose not to include unrelated multi-document QA methods such as Visconde or CuriousLLM in our comparison or related work, as they are designed for a different task setting with different assumptions and evaluation protocols.
 
-We will clarify this design choice and scope constraint in the revised manuscript to avoid misunderstanding and to make our positioning more explicit.
+**Action:** We will clarify this design choice and scope constraint in the revised manuscript Section 2 to avoid misunderstanding and to make our positioning more explicit.
 
 **Weakness-5:**
 While the paper claims lower LLM cost, there is no concrete token / dollar comparison against iterative baselines.
@@ -221,7 +222,7 @@ This comparison includes the full pipeline cost, from indexing to retrieval, usi
 
 As shown, BrowseNet is approximately 33× more cost-efficient than HippoRAG-2 while achieving state-of-the-art retrieval performance. This significant reduction in LLM-related cost is primarily due to BrowseNet's design, which minimizes LLM use during indexing and avoids expensive relation extraction or summary generation steps.
 
-We will include this token-level and cost-level analysis in the camera-ready version of the manuscript to substantiate our efficiency claims.
+**Action:** We will include this token-level and cost-level analysis in the camera-ready version of the manuscript in the Appendix section to substantiate our efficiency claims.
 
 
 **Weakness-6:**
@@ -231,7 +232,7 @@ We thank the reviewer for highlighting the importance of distinguishing our appr
 
 **GraphRAG Differences:**
 1) Graph Construction: BrowseNet builds a flat, lexically-connected graph without requiring hierarchical clustering, allowing for finer-grained and dynamic retrieval. In contrast, GraphRAG constructs hierarchical community-based graphs and generates summaries at the community level.
-2) Indexing Efficiency: BrowseNet relies on lightweight NER and similarity-based linking, offering a more efficient pipeline. GraphRAG involves LLM-based entity and relationship extraction during indexing, which is computationally expensive. 
+2) Indexing Efficiency: BrowseNet relies on lightweight NER (GliNER model) and similarity-based linking, offering a more efficient pipeline. GraphRAG involves LLM-based entity and relationship extraction during indexing, which is computationally expensive. 
 3) Retrieval Strategy: BrowseNet dynamically constructs query-specific subgraphs and performs targeted multi-hop traversal at query time. GraphRAG uses precomputed community summaries for global retrieval. 
 
 **HippoRAG Differences:**
@@ -239,6 +240,6 @@ We thank the reviewer for highlighting the importance of distinguishing our appr
 2) Traversal Mechanism: BrowseNet executes multi-step beam search with topological constraints, enabling deeper and more targeted reasoning. HippoRAG performs a single-step Personalized PageRank traversal.
 3) Pipeline Simplicity: BrowseNet simplifies the pipeline by requiring only NER, reducing annotation and inference complexity. HippoRAG requires both NER and relation extraction.
 
-In summary, although BrowseNet adopts the general KG-enhanced RAG framework, it contributes a distinct and more efficient approach by introducing: a simplified yet expressive graph construction pipeline, a query-specific, dynamically traversed subgraph for targeted reasoning, and greater indexing efficiency by avoiding LLM use during graph creation.
+In summary, although BrowseNet adopts the general KG-enhanced RAG framework, it contributes a distinct and more efficient approach by introducing: a simplified yet expressive graph construction pipeline, a query-specific, dynamically traversed subgraph for targeted reasoning, and greater indexing efficiency by avoiding generative LLM use during graph creation.
 
-We will revise the manuscript to make these contributions and differences more explicit and accessible to the reader.
+**Action:**  We will revise the manuscript to make these contributions and differences more explicit and accessible to the reader in the Introduction section.
