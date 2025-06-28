@@ -4,13 +4,13 @@ We thank the reviewer for their valuable feedback. We will revise the manuscript
 **Weakness-1:**
 The presentation of this paper requires significant improvement. For example, the overall structure of the main content needs to be reorganized. Some key experiments, such as the ablation study, should be included in the main text rather than the appendix. Although the authors have added content in Section 3, its readability needs further polishing.
 
-We thank the reviewer for the constructive feedback regarding the presentation and organization of the paper. In the revised version, we will take the following steps to improve clarity and structure:
+We thank the reviewer for the constructive feedback regarding the presentation and organization of the paper. 
+**Action:** In the revised version, we will take the following steps to improve clarity and structure:
 
 Reorganization of content: We will revisit the flow of the main sections to ensure a more coherent narrative and better separation between the method, implementation details, evaluation results, and ablation studies.
 
 Ablation studies: We agree that the ablation studies are critical for understanding the contribution of each component. Our manuscript includes ablations at two levels: KG accuracy-based ablation and retrieval recall-based ablation. We will
 include a new ablation study on answer generation, as outlined in our response to Weakness-2. To reflect their importance, we will move the recall-based ablation results from the appendix into the main paper, and present the KG accuracy-based and answer generation ablations in the Appendix, with clear references in the main text.
-
 
 We believe these revisions will significantly improve the presentation of our work.
 
@@ -30,7 +30,8 @@ Upon further analysis, we found that the quality of the final answer is signific
 | deepseek-chat-v3   |62.20   | 78.91   | **66.10**   | **75.86**   |**43.50**   | **56.25**   | **57.27**   | **70.34**   |
 | gemini-2.0-flash   | **63.40**   | 78.00  | 62.10   | 70.30   | 38.10   | 47.37   | 54.53   | 65.22   |
 
-These results indicate that while the retrieval and reasoning components provide high-quality evidence, the final QA performance is sensitive to the language model used. We observed nearly a 10-point difference in average F1 score between the best and least effective LLMs. We will include this analysis in the camera-ready version to provide a more complete picture of the QA performance and clarify that the observed drop in some results was partly due to the LLM selection rather than limitations in retrieval quality.
+These results indicate that while the retrieval and reasoning components provide high-quality evidence, the final QA performance is sensitive to the language model used. We observed nearly a 10-point difference in average F1 score between the best and least effective LLMs.
+**Action:** We will include this analysis in the camera-ready version to provide a more complete picture of the QA performance and clarify that the observed drop in some results was partly due to the LLM selection rather than limitations in retrieval quality.
 
 
 **Comments Suggestions And Typos-1:**
