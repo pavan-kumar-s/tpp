@@ -5,9 +5,10 @@ We thank the reviewer for their valuable feedback. We will revise the manuscript
 The presentation of this paper requires significant improvement. For example, the overall structure of the main content needs to be reorganized. Some key experiments, such as the ablation study, should be included in the main text rather than the appendix. Although the authors have added content in Section 3, its readability needs further polishing.
 
 We thank the reviewer for the constructive feedback regarding the presentation and organization of the paper. 
+
 **Action:** In the revised version, we will take the following steps to improve clarity and structure:
 
-Reorganization of content: We will revisit the flow of the main sections to ensure a more coherent narrative and better separation between the method, implementation details, evaluation results, and ablation studies.
+Reorganization of content: We will revisit the flow of the main sections to ensure a more coherent narrative and better separation between the method (Section 3), experimental setup (Section 4), evaluation results (Section 5), and ablation studies (Subsection 5.4).
 
 Ablation studies: We agree that the ablation studies are critical for understanding the contribution of each component. Our manuscript includes ablations at two levels: KG accuracy-based ablation and retrieval recall-based ablation. We will
 include a new ablation study on answer generation, as outlined in our response to Weakness-2. To reflect their importance, we will move the recall-based ablation results from the appendix into the main paper, and present the KG accuracy-based and answer generation ablations in the Appendix, with clear references in the main text.
@@ -31,13 +32,16 @@ Upon further analysis, we found that the quality of the final answer is signific
 | gemini-2.0-flash   | **63.40**   | 78.00  | 62.10   | 70.30   | 38.10   | 47.37   | 54.53   | 65.22   |
 
 These results indicate that while the retrieval and reasoning components provide high-quality evidence, the final QA performance is sensitive to the language model used. We observed nearly a 10-point difference in average F1 score between the best and least effective LLMs.
-**Action:** We will include this analysis in the camera-ready version to provide a more complete picture of the QA performance and clarify that the observed drop in some results was partly due to the LLM selection rather than limitations in retrieval quality.
+
+**Action:** We will include this analysis as an ablation study in the Appendix section A4 in the camera-ready version to provide a more complete picture of the QA performance and clarify that the observed drop in some results was partly due to the LLM selection rather than limitations in retrieval quality.
 
 
 **Comments Suggestions And Typos-1:**
 The reliability of the Isomorphic accuracy metric needs to be further clarified.
 
 Isomorphic accuracy serves as a useful metric for evaluating the structural alignment between the predicted and reference query graphs. We would like to clarify that isomorphic accuracy primarily reflects how closely the structure of the decomposed subqueries matches the ground truth in terms of nodes and relation linkage. It is a strict, binary metric-even a single edge mismatch results in a score of zero, which makes it a conservative measure of structural accuracy. There can be cases where the predicted subquery is structurally similar to the gold standard but differs in semantics, or vice versa.
+
+**Action:** We will incorporate an appropriate response for more clarity in Section 4.3.2.
 
 **Comments Suggestions And Typos-2:**
 Could you provide further clarification on how the datasets are partitioned in the experiments.
@@ -52,11 +56,12 @@ We thank the reviewer for the opportunity to clarify this aspect of our experime
 Related work lacks multi-doc related and efficient RAG related research.
 5) Press, O., Zhang, M., Min, S., Schmidt, L., Smith, N. A., & Lewis, M. (2022). Measuring and narrowing the compositionality gap in language models. arXiv preprint arXiv:2210.03350.
 
+**Action:** We will include an appropriate response in Section 4.1 in the camera-ready version of the paper
 
 **Comments Suggestions And Typos-3:**
 BrowseNet shows improvement in knowledge retrieval; however, why does its performance on question answering decrease? Please elaborate on the case of 2WikiMQA.
 
-We thank the reviewer for this insightful comment. To better understand the observed gap between retrieval quality and question answering performance, particularly in the case of 2WikiMQA, we conducted a detailed error analysis. After observing how QA performance varies with different LLMs (as shown in our updated experiments), we specifically analyzed the subset of questions where the retrieval recall was high, but the final answer accuracy was low. In particular: 103 questions had perfect retrieval recall (Recall = 1) but received an F1 score of 0; 88 additional questions had non-zero recall and still received an F1 score of 0.
+We thank the reviewer for this insightful comment. To better understand the observed gap between retrieval quality and question answering performance, particularly in the case of 2WikiMQA, we conducted a detailed error analysis. After observing how QA performance varies with different LLMs (as shown in our updated experiments), we specifically analyzed the subset of questions where the retrieval recall was high, but the final answer accuracy was low. In particular, 103 questions had perfect retrieval recall (Recall = 1) but received an F1 score of 0; 88 additional questions had non-zero recall and still received an F1 score of 0.
 
 Upon manually inspecting the generated answers for these questions, we found that in many cases, the answers were semantically correct but did not exactly match the ground truth string, resulting in a zero F1 score due to strict matching. For example:
 Question: Which country is Aleksander Koniecpolski’s father from? Ground Truth: Polish-Lithuanian; Generated Answer: Poland
@@ -65,12 +70,14 @@ Question: What nationality is the performer of the song "When the Stars Go Blue"
 
 In both cases, the model provides reasonable and arguably correct answers, but they do not match the gold answer string verbatim. This highlights a limitation of using strict exact match and F1 as evaluation metrics for open-ended QA, particularly when synonyms, paraphrasing, or slight factual reinterpretations occur.
 
-We will further include this analysis in the Appendix section of the camera-ready version of the manuscript. 
+**Action:** We will further include this result in Section 5.3, and additional details will be provided in the Appendix of the camera-ready version of the manuscript if needed. 
 
 **Comments Suggestions And Typos-4:**
 Further analysis is needed to explain why BrowseNet does not show significant improvement in overall question answering performance.
 
-As discussed in our previous responses, we conducted additional analysis to investigate this issue. Specifically, we examined the impact of the LLM used in the answer generation stage, analyzed cases with high retrieval recall but low answer accuracy, and identified instances where semantically correct answers were penalized due to strict string matching. These insights provide a clearer explanation for the observed gap between improved retrieval and QA performance. We will summarize this analysis in the camera-ready manuscript to ensure it is presented.
+As discussed in our previous responses, we conducted additional analysis to investigate this issue. Specifically, we examined the impact of the LLM used in the answer generation stage, analyzed cases with high retrieval recall but low answer accuracy, and identified instances where semantically correct answers were penalized due to strict string matching. These insights provide a clearer explanation for the observed gap between improved retrieval and QA performance. 
+
+**Action:** We will summarize this analysis in the camera-ready manuscript to ensure it is presented.
 
 **Comments Suggestions And Typos-5:**
 The implementation details are not provided in this submission, making it difficult to evaluate the backbone model used in BrowseNet.
@@ -83,13 +90,13 @@ We use the GliNER model for named entity recognition during the graph constructi
 Chunk Embeddings:
 We employ the NV-Embed-v2 model to get the embeddings. The output embedding dimensionality is set to the model’s default value of 4096.
 
-Language Models (LLMs):
+Large Language Models (LLMs):
 BrowseNet utilizes large language models at three stages: keyword generation (optional), query decomposition, and answer generation. All LLMs are queried using a temperature of 0 to ensure deterministic responses. Also, gpt-4o-mini is used for answer generation in the reported results.
 
 Hardware and Environment:
 All experiments were conducted on a server with an NVIDIA A100 GPU and 512 GB of RAM. Model inference and graph operations were implemented using Python with standard libraries (e.g., PyTorch, Hugging Face Transformers, NetworkX).
 
-We will incorporate this information into Appendix Section A.11 in the revised manuscript to enhance transparency and reproducibility. We also commit to open-sourcing the full codebase to support the reproducibility of all experiments reported in the manuscript.
+**Action:** We will incorporate this information into Appendix Section A.11 in the revised manuscript to enhance transparency and reproducibility. We also commit to open-sourcing the full codebase to support the reproducibility of all experiments reported in the manuscript.
 
 
 # Reviewer BHPP: 
@@ -103,12 +110,12 @@ We appreciate the reviewer's thoughtful observation. One of the primary motivati
 In particular, the following design choices contribute to BrowseNet’s cost-efficiency:
 
 1) Minimal LLM Usage During Indexing:
-As stated in the manuscript, "our best-performing model does not require any LLM-generated text during the offline indexing phase, making it both cost-efficient and less prone to noise." Unlike traditional approaches that rely heavily on large language models for entity or relation generation, BrowseNet only uses lightweight Named Entity Recognition (NER) via GLiNER during indexing. No LLM is used to generate intermediate graph structures or summaries during this stage. 
+As stated in the manuscript, "our best-performing model does not require any LLM-generated text during the offline indexing phase, making it both cost-efficient and less prone to noise." Unlike traditional approaches that rely heavily on large language models for entity or relation generation, BrowseNet only uses lightweight Named Entity Recognition (NER) via GLiNER during indexing. Also, it can be seen from the Tables-5,6 that the performance of GliNER is similar to that of the generative models like gpt-4o and Claude-3.7-Sonnet. Hence, in the final results presented, no generative models were used to generate intermediate graph structures or summaries during indexing stage. 
 
 2) Simplified Knowledge Graph Construction:
 Traditional methods such as HippoRAG and KAG involve both Named Entity Recognition (NER) and Relation Extraction (RE) pipelines, often requiring fine-tuned models or LLM APIs. This substantially increases computational cost and monetary cost (especially with LLM-based APIs). In contrast, BrowseNet requires only NER, reducing the overall construction pipeline complexity by approximately 50%. This design significantly lowers both preprocessing time and infrastructure requirements, making BrowseNet more scalable and deployable in real-world settings.
 
-We will revise the manuscript to make these cost-related benefits more explicit in the comparison with prior graph-based retrieval systems.
+**Action:** We will revise the manuscript to make these cost-related benefits more explicit in the comparison with prior graph-based retrieval systems in the Appendix section.
 
 **Weakness-2:**
 W2: More experiments needed (For example, using different LLMs).
@@ -131,18 +138,23 @@ Below, we now summarize the impact of various LLMs on answer generation, evaluat
 The results reported in the manuscript are based on gpt-4o-mini. For fairness, all LLMs above were evaluated using the same input and prompt format.
 
 From the table, it is evident that the choice of LLM significantly impacts answer generation performance with up to a 10% difference in F1-score across models. This reinforces the importance of selecting the appropriate LLM for downstream QA tasks.
-These results will be incorporated into the revised version of the paper to provide a more comprehensive evaluation of the impact of different LLMs on answer generation.
+
+**Action:** These results will be incorporated into the camera-ready version of the paper in the Appendix Section A.4 to provide a more comprehensive evaluation of the impact of different LLMs on answer generation.
 
 
 **Comments Suggestions And Typos-1:**
 D1: As a compound noun, the correct hyphenation for "work of art" should be "work-of-art" rather than "work_of_art".
 
-We thank the reviewer for pointing this out. We will correct the phrasing and use the appropriate hyphenated form "work-of-art" in the camera-ready version of the manuscript.
+We thank the reviewer for pointing this out. 
+
+**Action:** We will correct the phrasing and use the appropriate hyphenated form "work-of-art" in the camera-ready version of the manuscript.
 
 **Comments Suggestions And Typos-2:**
 D2: It is inappropriate to have both "Equation + numeral" and "Eq. + numeral" following "As shown in". It is preferable to unify the format. Additionally, the numerals in both cases are not enclosed in parentheses.
 
-We thank the reviewer for highlighting this inconsistency. We will revise the manuscript to ensure a consistent format throughout. Specifically, we will standardize the usage to “Eq. (n)” and ensure that all equation references include the numeral enclosed in parentheses, as per standard conventions.
+We thank the reviewer for highlighting this inconsistency. 
+
+**Action:** We will revise the manuscript to ensure a consistent format throughout. Specifically, we will standardize the usage to “Eq. (n)” and ensure that all equation references include the numeral enclosed in parentheses, as per standard conventions.
 
 
 
