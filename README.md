@@ -187,7 +187,17 @@ We will clarify this design choice and scope constraint in the revised manuscrip
 **Weakness-5:**
 While the paper claims lower LLM cost, there is no concrete token / dollar comparison against iterative baselines.
 
-#########################################################
+Here we provide the token/dollar comparison against the single-step retrieval baseline, HippoRAG-2.
+
+Offline indexing:
+1) For the offline indexing phase (KG construciton) BrowseNet uses GliNER model to get the entitiesm which does not cost any API. On the other hand, for the case of HippoRAG-2, the following is the cost incurred for the KG construction phase in the HotpotQA dataset.
+   
+|     | Tokens |
+|--------|------|
+|Input tokens|5880618|
+|Output tokens|2110007|
+|Total tokens|7990625|
+
 
 **Weakness-6:**
 BrowseNet extends earlier KG-enhanced RAGs (GraphRAG, HippoRAG) mainly with query-specific traversal, which limits its novelty.
