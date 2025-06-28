@@ -50,8 +50,19 @@ Related work lacks multi-doc related and efficient RAG related research.
 **Comments Suggestions And Typos-3:**
 BrowseNet shows improvement in knowledge retrieval; however, why does its performance on question answering decrease? Please elaborate on the case of 2WikiMQA.
 
+We thank the reviewer for this insightful comment. To better understand the observed gap between retrieval quality and question answering performance, particularly in the case of 2WikiMQA, we conducted a detailed error analysis. After observing how QA performance varies with different LLMs (as shown in our updated experiments), we specifically analyzed the subset of questions where the retrieval recall was high, but the final answer accuracy was low. In particular: 103 questions had perfect retrieval recall (Recall = 1) but received an F1 score of 0; 88 additional questions had non-zero recall and still received an F1 score of 0.
+
+Upon manually inspecting the generated answers for these questions, we found that in many cases, the answers were semantically correct but did not exactly match the ground truth string, resulting in a zero F1 score due to strict matching. For example:
+Question: Which country is Aleksander Koniecpolski’s father from? Ground Truth: Polish-Lithuanian; Generated Answer: Poland
+
+Question: What nationality is the performer of the song "When the Stars Go Blue"? Ground Truth: America; Generated Answer: American.
+
+In both cases, the model provides reasonable and arguably correct answers, but they do not match the gold answer string verbatim. This highlights a limitation of using strict exact match and F1 as evaluation metrics for open-ended QA, particularly when synonyms, paraphrasing, or slight factual reinterpretations occur.
+
 **Comments Suggestions And Typos-4:**
 Further analysis is needed to explain why BrowseNet does not show significant improvement in overall question answering performance.
+
+As discussed in our previous responses, we conducted additional analysis to investigate this issue. Specifically, we examined the impact of the LLM used in the answer generation stage, analyzed cases with high retrieval recall but low answer accuracy, and identified instances where semantically correct answers were penalized due to strict string matching. These insights provide a clearer explanation for the observed gap between improved retrieval and QA performance. We will summarize this analysis in the revised manuscript to ensure it is presented.
 
 **Comments Suggestions And Typos-5:**
 The implementation details are not provided in this submission, making it difficult to evaluate the backbone model used in BrowseNet.
