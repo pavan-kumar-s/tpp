@@ -200,15 +200,18 @@ Here we provide the token/dollar comparison against the single-step retrieval ba
 **Weakness-6:**
 BrowseNet extends earlier KG-enhanced RAGs (GraphRAG, HippoRAG) mainly with query-specific traversal, which limits its novelty.
 
-We thank the reviewer for highlighting the importance of distinguishing our approach from existing KG-enhanced RAG methods. While BrowseNet builds upon the general idea of incorporating knowledge graphs into retrieval-augmented generation, it introduces several key innovations that set it apart from both GraphRAG and HippoRAG:
+We thank the reviewer for highlighting the importance of distinguishing our approach from existing KG-enhanced RAG methods. While BrowseNet builds upon the general idea of integrating knowledge graphs into retrieval-augmented generation, it introduces multiple novel contributions across graph construction, indexing efficiency, and retrieval mechanisms. These differences collectively make BrowseNet both more efficient and more adaptable than prior approaches such as GraphRAG and HippoRAG.
 
 **GraphRAG Differences:**
-1) Graph Construction: GraphRAG constructs hierarchical community-based graphs and generates summaries at the community level. In contrast, BrowseNet builds a flat, lexically-connected graph without requiring hierarchical clustering, allowing for finer-grained and dynamic retrieval.
-2) Indexing Efficiency: GraphRAG involves LLM-based entity and relationship extraction during indexing, which is computationally expensive. BrowseNet relies on lightweight NER and similarity-based linking, offering a more efficient pipeline.
-3) Retrieval Strategy: GraphRAG uses precomputed community summaries for global retrieval. BrowseNet, however, dynamically constructs query-specific subgraphs and performs targeted multi-hop traversal at query time.
+1) Graph Construction: BrowseNet builds a flat, lexically-connected graph without requiring hierarchical clustering, allowing for finer-grained and dynamic retrieval. In contrast, GraphRAG constructs hierarchical community-based graphs and generates summaries at the community level.
+2) Indexing Efficiency: BrowseNet relies on lightweight NER and similarity-based linking, offering a more efficient pipeline. GraphRAG involves LLM-based entity and relationship extraction during indexing, which is computationally expensive. 
+3) Retrieval Strategy: BrowseNet dynamically constructs query-specific subgraphs and performs targeted multi-hop traversal at query time. GraphRAG uses precomputed community summaries for global retrieval. 
 
 **HippoRAG Differences:**
-1) Graph Schema: HippoRAG employs schemaless KGs using OpenIE triples and synonymy-aware retrieval encoders. BrowseNet, in contrast, uses structured lexical relationships and leverages ColBERTv2-based linking for more precise entity disambiguation.
-2) Traversal Mechanism: HippoRAG performs single-step Personalized PageRank traversal, while BrowseNet executes multi-step beam search with topological constraints, enabling deeper and more targeted reasoning.
-3) Pipeline Simplicity: HippoRAG requires both NER and relation extraction, whereas BrowseNet simplifies the pipeline by requiring only NER, reducing annotation and inference complexity.
+1) Graph Schema: BrowseNet uses structured lexical relationships and leverages ColBERTv2-based linking for more precise entity disambiguation. HippoRAG, in contrast, employs schemaless KGs using OpenIE triples and synonymy-aware retrieval encoders. 
+2) Traversal Mechanism: BrowseNet executes multi-step beam search with topological constraints, enabling deeper and more targeted reasoning. HippoRAG performs a single-step Personalized PageRank traversal.
+3) Pipeline Simplicity: BrowseNet simplifies the pipeline by requiring only NER, reducing annotation and inference complexity. HippoRAG requires both NER and relation extraction.
 
+In summary, although BrowseNet adopts the general KG-enhanced RAG framework, it contributes a distinct and more efficient approach by introducing: a simplified yet expressive graph construction pipeline, a query-specific, dynamically traversed subgraph for targeted reasoning, and greater indexing efficiency by avoiding LLM use during graph creation.
+
+We will revise the manuscript to make these contributions and differences more explicit and accessible to the reader.
