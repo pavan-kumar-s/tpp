@@ -34,7 +34,18 @@ The reliability of the Isomorphic accuracy metric needs to be further clarified.
 We acknowledge that isomorphic accuracy, while helpful, does not fully capture the semantic correctness of a decomposed query. However, it serves as a useful proxy metric for evaluating the structural alignment between the predicted and reference query graphs. We would like to clarify that isomorphic accuracy primarily reflects how closely the structure of the decomposed subqueries matches the ground truth in terms of nodes and relation linkage. It is a strict, binary metric-even a single edge mismatch results in a score of zero, which makes it a conservative measure of structural accuracy. There can be cases where the predicted subquery is structurally similar to the gold standard but differs in semantics, or vice versa.
 
 **Comments Suggestions And Typos-2:**
-Could you provide further clarification on how the datasets are partitioned in the experiments?
+Could you provide further clarification on how the datasets are partitioned in the experiments.
+
+We thank the reviewer for the opportunity to clarify this aspect of our experimental setup. To evaluate the multi-hop QA pipeline, we follow the standard practice used in prior works [1–5]. Specifically, we randomly sample 1,000 questions from the validation set of each of the three benchmark datasets: HotpotQA, 2WikiMultiHopQA, and MuSiQue. For each sampled question, we include both its supporting passages (which contain the information necessary to answer the question) and distractor passages (which are similar in content but do not contain the correct answer) to construct the corpus used for retrieval. This results in a corpus of: 9,221 passages for HotpotQA, 6,119 passages for 2WikiMultiHopQA, and 11,656 passages for MuSiQue. These statistics are reported in Table 1 of the main manuscript. We will revise the manuscript to make this setup more explicit and transparent in the experimental section.
+
+**References**
+1) Gutiérrez, B. J., Shu, Y., Gu, Y., Yasunaga, M., & Su, Y. (2024, January). Hipporag: Neurobiologically inspired long-term memory for large language models. In The Thirty-eighth Annual Conference on Neural Information Processing Systems.
+2) Gutiérrez, B. J., Shu, Y., Qi, W., Zhou, S., & Su, Y. (2025). From rag to memory: Non-parametric continual learning for large language models. arXiv preprint arXiv:2502.14802.
+3) Trivedi, H., Balasubramanian, N., Khot, T., & Sabharwal, A. (2022). Interleaving retrieval with chain-of-thought reasoning for knowledge-intensive multi-step questions. arXiv preprint arXiv:2212.10509.
+4) Liang, L., Bo, Z., Gui, Z., Zhu, Z., Zhong, L., Zhao, P., ... & Chen, H. (2025, May). Kag: Boosting llms in professional domains via knowledge augmented generation. In Companion Proceedings of the ACM on Web Conference 2025 (pp. 334-343).
+Related work lacks multi-doc related and efficient RAG related research.
+5) Press, O., Zhang, M., Min, S., Schmidt, L., Smith, N. A., & Lewis, M. (2022). Measuring and narrowing the compositionality gap in language models. arXiv preprint arXiv:2210.03350.
+
 
 **Comments Suggestions And Typos-3:**
 BrowseNet shows improvement in knowledge retrieval; however, why does its performance on question answering decrease? Please elaborate on the case of 2WikiMQA.
