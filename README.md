@@ -31,7 +31,7 @@ These results indicate that while the retrieval and reasoning components provide
 **Comments Suggestions And Typos-1:**
 The reliability of the Isomorphic accuracy metric needs to be further clarified.
 
-We acknowledge that isomorphic accuracy, while helpful, does not fully capture the semantic correctness of a decomposed query. However, it serves as a useful proxy metric for evaluating the structural alignment between the predicted and reference query graphs. We would like to clarify that isomorphic accuracy primarily reflects how closely the structure of the decomposed subqueries matches the ground truth in terms of nodes and relation linkage. It is a strict, binary metric-even a single edge mismatch results in a score of zero, which makes it a conservative measure of structural accuracy. There can be cases where the predicted subquery is structurally similar to the gold standard but differs in semantics, or vice versa.
+Isomorphic accuracy serves as a useful metric for evaluating the structural alignment between the predicted and reference query graphs. We would like to clarify that isomorphic accuracy primarily reflects how closely the structure of the decomposed subqueries matches the ground truth in terms of nodes and relation linkage. It is a strict, binary metric-even a single edge mismatch results in a score of zero, which makes it a conservative measure of structural accuracy. There can be cases where the predicted subquery is structurally similar to the gold standard but differs in semantics, or vice versa.
 
 **Comments Suggestions And Typos-2:**
 Could you provide further clarification on how the datasets are partitioned in the experiments.
@@ -59,6 +59,8 @@ Question: What nationality is the performer of the song "When the Stars Go Blue"
 
 In both cases, the model provides reasonable and arguably correct answers, but they do not match the gold answer string verbatim. This highlights a limitation of using strict exact match and F1 as evaluation metrics for open-ended QA, particularly when synonyms, paraphrasing, or slight factual reinterpretations occur.
 
+We will further include this analysis in the Appendix section of the camera-ready version of the manuscript. 
+
 **Comments Suggestions And Typos-4:**
 Further analysis is needed to explain why BrowseNet does not show significant improvement in overall question answering performance.
 
@@ -81,6 +83,8 @@ BrowseNet utilizes large language models at three stages: keyword generation (op
 Hardware and Environment:
 All experiments were conducted on a server with an NVIDIA A100 GPU and 512 GB of RAM. Model inference and graph operations were implemented using Python with standard libraries (e.g., PyTorch, Hugging Face Transformers, NetworkX).
 
+We will incorporate this information into Appendix Section A.11 in the revised manuscript to enhance transparency and reproducibility. We also commit to open-sourcing the full codebase to support the reproducibility of all experiments reported in the manuscript.
+
 
 # Reviewer BHPP: 
 We thank the reviewer for their valuable feedback. We will revise the manuscript to incorporate all reviewer comments in the camera-ready submission.
@@ -88,12 +92,12 @@ We thank the reviewer for their valuable feedback. We will revise the manuscript
 **Weakness-1:**
 W1: The results show that the graph constructed by the new method has certain improvements in its own performance and retrieval performance. Is it necessary to consider the difference in construction cost compared with the traditional method?
 
-We appreciate the reviewer’s thoughtful observation. One of the primary motivations behind BrowseNet is precisely to reduce the construction cost and complexity associated with existing knowledge graph-enhanced RAG systems, without compromising retrieval quality.
+We appreciate the reviewer's thoughtful observation. One of the primary motivations behind BrowseNet is precisely to reduce the construction cost and complexity associated with existing knowledge graph-enhanced RAG systems, without compromising retrieval quality.
 
 In particular, the following design choices contribute to BrowseNet’s cost-efficiency:
 
 1) Minimal LLM Usage During Indexing:
-As stated in the manuscript, "our best-performing model does not require any LLM-generated text during the offline indexing phase, making it both cost-efficient and less prone to noise." Unlike traditional approaches that rely heavily on large language models for entity or relation generation, BrowseNet only uses lightweight Named Entity Recognition (NER) via GLiNER during indexing. No LLM is used to generate intermediate graph structures or summaries during this stage.
+As stated in the manuscript, "our best-performing model does not require any LLM-generated text during the offline indexing phase, making it both cost-efficient and less prone to noise." Unlike traditional approaches that rely heavily on large language models for entity or relation generation, BrowseNet only uses lightweight Named Entity Recognition (NER) via GLiNER during indexing. No LLM is used to generate intermediate graph structures or summaries during this stage. 
 
 2) Simplified Knowledge Graph Construction:
 Traditional methods such as HippoRAG and KAG involve both Named Entity Recognition (NER) and Relation Extraction (RE) pipelines, often requiring fine-tuned models or LLM APIs. This substantially increases computational cost and monetary cost (especially with LLM-based APIs). In contrast, BrowseNet requires only NER, reducing the overall construction pipeline complexity by approximately 50%. This design significantly lowers both preprocessing time and infrastructure requirements, making BrowseNet more scalable and deployable in real-world settings.
