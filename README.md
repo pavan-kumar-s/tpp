@@ -5,8 +5,11 @@ We thank the reviewer for their valuable feedback. We will revise the manuscript
 The presentation of this paper requires significant improvement. For example, the overall structure of the main content needs to be reorganized. Some key experiments, such as the ablation study, should be included in the main text rather than the appendix. Although the authors have added content in Section 3, its readability needs further polishing.
 
 We thank the reviewer for the constructive feedback regarding the presentation and organization of the paper. In the revised version, we will take the following steps to improve clarity and structure:
+
 Reorganization of content: We will revisit the flow of the main sections to ensure a more coherent narrative and better separation between the method, implementation details, evaluation results, and ablation studies.
-Ablation studies: We agree that the ablation studies provide important insights. We have performed ablation studies at two distinct levels in the manuscript: KG accuracy-based and recall-based. Also, we plan to include one more ablation on answer generation as detailed in the comment to Weakness-2. We will move the Recall-based ablation results from the appendix into the main text to highlight their significance, and the KG accuracy-based and answer generation-based ablation to the Appendix.
+
+Ablation studies: We agree that the ablation studies are critical for understanding the contribution of each component. Our manuscript includes ablations at two levels: KG accuracy-based ablation, and retrieval recall-based ablation. We also plan to include a new ablation study on answer generation, as outlined in our response to Weakness-2. To reflect their importance, we will move the recall-based ablation results from the appendix into the main paper, and present the KG accuracy-based and answer generation ablations in the Appendix, with clear references in the main text.
+
 
 We believe these revisions will significantly improve the presentation of our work.
 
