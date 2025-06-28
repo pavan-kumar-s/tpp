@@ -88,7 +88,17 @@ We thank the reviewer for their valuable feedback. We will revise the manuscript
 **Weakness-1:**
 W1: The results show that the graph constructed by the new method has certain improvements in its own performance and retrieval performance. Is it necessary to consider the difference in construction cost compared with the traditional method?
 
-####################################
+We appreciate the reviewer’s thoughtful observation. One of the primary motivations behind BrowseNet is precisely to reduce the construction cost and complexity associated with existing knowledge graph-enhanced RAG systems, without compromising retrieval quality.
+
+In particular, the following design choices contribute to BrowseNet’s cost-efficiency:
+
+1) Minimal LLM Usage During Indexing:
+As stated in the manuscript, "our best-performing model does not require any LLM-generated text during the offline indexing phase, making it both cost-efficient and less prone to noise." Unlike traditional approaches that rely heavily on large language models for entity or relation generation, BrowseNet only uses lightweight Named Entity Recognition (NER) via GLiNER during indexing. No LLM is used to generate intermediate graph structures or summaries during this stage.
+
+2) Simplified Knowledge Graph Construction:
+Traditional methods such as HippoRAG and KAG involve both Named Entity Recognition (NER) and Relation Extraction (RE) pipelines, often requiring fine-tuned models or LLM APIs. This substantially increases computational cost and monetary cost (especially with LLM-based APIs). In contrast, BrowseNet requires only NER, reducing the overall construction pipeline complexity by approximately 50%. This design significantly lowers both preprocessing time and infrastructure requirements, making BrowseNet more scalable and deployable in real-world settings.
+
+We will revise the manuscript to make these cost-related benefits more explicit in the comparison with prior graph-based retrieval systems.
 
 **Weakness-2:**
 W2: More experiments needed (For example, using different LLMs).
