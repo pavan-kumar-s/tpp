@@ -27,9 +27,9 @@ Upon further analysis, we found that the quality of the final answer is signific
 |  | EM | F1 | EM | F1 | EM | F1 | EM | F1 |
 | gpt-4o-mini  |  62.20  | 77.69   | 63.90   | 74.50  | 41.60  | 54.08    | 55.90   |  68.76  |
 | gpt-3.5-turbo  | 58.80  | 73.81  | 47.70   | 59.57   | 37.40   | 49.77  |47.97    | 61.05   |
-| gpt-4.1-mini | 63.20   | **79.21**   | 64.50   | 74.43   | 42.70   | 55.07   | 56.80   | 69.57   |
-| deepseek-chat-v3   |62.20   | 78.91   | **66.10**   | **75.86**   |**43.50**   | **56.25**   | **57.27**   | **70.34**   |
-| gemini-2.0-flash   | **63.40**   | 78.00  | 62.10   | 70.30   | 38.10   | 47.37   | 54.53   | 65.22   |
+| gpt-4.1-mini | 63.20   | 79.21   | 64.50   | 74.43   | 42.70   | 55.07   | 56.80   | 69.57   |
+| deepseek-chat-v3   |62.20   | 78.91   | 66.10   | 75.86   |43.50   | 56.25   | 57.27   | 70.34   |
+| gemini-2.0-flash   | 63.40   | 78.00  | 62.10   | 70.30   | 38.10   | 47.37   | 54.53   | 65.22   |
 
 These results indicate that while the retrieval and reasoning components provide high-quality evidence, the final QA performance is sensitive to the language model used. We observed nearly a 10-point difference in average F1 score between the best and least effective LLMs.
 
