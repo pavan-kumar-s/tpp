@@ -114,14 +114,14 @@ In conclusion, at this stage, I have decided not to increase my original score. 
 We sincerely thank the reviewer for their continued engagement and thoughtful feedback. We address each point below in turn:
 
 1) **Error analysis:**
-We respectfully clarify that the error analysis requested in the previous review cycle has been included in the current submission. Specifically: Appendix Section A.8 and Table 11 provide a detailed manual evaluation of 100 randomly selected questions from the MuSiQue dataset where the BrowseNet pipeline received a zero F1 score. This error analysis is conducted in a component-wise fashion, aligning with the architecture of our pipeline: Knowledge Graph Construction, Query Subgraph Extraction, Semantic Retrieval, and Answer Generation. Each stage is analyzed to isolate sources of error the details are provided as the following:
+We respectfully clarify that the error analysis requested in the previous review cycle has been included in the current submission. Specifically, Appendix Section A.8 and Table 11 in the manuscript provide a detailed manual evaluation of 100 randomly selected questions from the MuSiQue dataset where the BrowseNet pipeline received F1 score of zero. This error analysis is conducted in a component-wise fashion, aligning with the architecture of our pipeline: Knowledge Graph Construction, Query Subgraph Extraction, Semantic Retrieval, and Answer Generation as explained in section Appendix A.8. Each stage is analyzed to isolate sources of error the details are provided as follows:
 
 The downstream performance of our question-answering pipeline, specifically answer generation, relies on the effectiveness of the entire workflow. To analyze the source of errors, we sampled 100 questions where BrowseNet failed from the MuSiQue dataset and classified the errors into four categories: knowledge graph construction, query-subgraph extraction, retrieval, and answer generation. Table~1 presents the number of questions corresponding to each category. Note that a single question can be associated with multiple sources of error.
 
 
 **a) Knowledge graph construction:** These errors arise because of missing edges in the constructed KG. Our analysis reveals that 9\% of relevant edges are missing from the graph.
     
-**b) Query-subgraph extraction:** This stage is evaluated through two approaches: manual analysis to determine whether each question is correctly decomposed, and isomorphic accuracy, as defined in Section \ref{query-subgraph evaluation}. Human evaluation shows that 33\% of the questions are either incorrectly decomposed or contain redundant sub-queries (i.e., multiple sub-queries retrieving the same information). Isomorphic accuracy reveals that 35\% of the questions result in query-subgraphs that are not isomorphic to the ground-truth structure, indicating errors or redundancies in the decomposition process. 
+**b) Query-subgraph extraction:** This stage is evaluated through two approaches: manual analysis to determine whether each question is correctly decomposed, and isomorphic accuracy. Human evaluation shows that 33\% of the questions are either incorrectly decomposed or contain redundant sub-queries (i.e., multiple sub-queries retrieving the same information). Isomorphic accuracy reveals that 35\% of the questions result in query-subgraphs that are not isomorphic to the ground-truth structure, indicating errors or redundancies in the decomposition process. 
 
     Here, we present an example where query-graph generation failed to produce accurate outputs.
     
@@ -133,10 +133,10 @@ The downstream performance of our question-answering pipeline, specifically answ
         **Q3:** <ANS-1> <ANS-2> Are both Google and Banco De Ponce located in the same country?  
         
     
-    In this case, only the first two questions are necessary to traverse the graph. The third question is redundant because the answer to the third question cannot be inferred from any of the chunks in the KG.
+In this case, only the first two questions are necessary to traverse the graph. The third question is redundant because the answer to the third question cannot be inferred from any of the chunks in the KG.
     
 **c) Semantic retrieval:**
-In terms of overall recall (Recall@5) distribution across all evaluated questions, 1\% of the questions resulted in zero recall, while 48\% exhibited a recall of less than 1. To understand the influence of query-subgraph extraction on retrieval effectiveness, we analyze recall performance based on both human evaluation and isomorphic accuracy. According to human evaluation, among the 33 incorrectly decomposed questions, only 11 (33.33\%) achieved full recall. In contrast, for the 67 correctly decomposed questions, 40 (59.70\%) achieved full recall. This highlights the critical role of accurate query decomposition in successful retrieval. A similar trend is observed using isomorphic accuracy. Out of the 35 incorrectly decomposed questions (based on non-isomorphic subgraphs), 12 (34.28\%) achieved full recall. Among the 65 correctly decomposed questions, 40 (60.00\%) achieved full recall. These results further reinforce that effective query decomposition significantly improves retrieval performance.
+In terms of overall recall (Recall@5) distribution across all evaluated questions, 1\% of the questions resulted in zero recall, while 48\% exhibited a recall of less than 1. To understand the influence of query-subgraph extraction on retrieval effectiveness, we analyze recall performance based on both human evaluation and isomorphic accuracy. According to human evaluation, among the 33 incorrectly decomposed questions, only 11 (33.33\%) achieved full recall. In contrast, for the 67 correctly decomposed questions, 40 (59.70\%) achieved full recall. This highlights the critical role of accurate query decomposition in successful retrieval. A similar trend is observed using isomorphic accuracy as discussed follows. Out of the 35 incorrectly decomposed questions (based on non-isomorphic subgraphs), 12 (34.28\%) achieved full recall. Among the 65 correctly decomposed questions, 40 (60.00\%) achieved full recall. These results further reinforce that effective query decomposition significantly improves retrieval performance.
 
 **d) Answer Generation:** For questions where the retrieval stage achieved full recall, the final answer generation step still produced incorrect answers in 9\% of the cases. This indicates that even when all relevant information is successfully retrieved, the model may still fail to generate the correct answer. Such failures can be attributed to challenges in reasoning, interpreting the evidence, or inherent limitations of the generative model itself.
 
@@ -165,22 +165,22 @@ The isomorphic accuracy metric is used to evaluate the structural fidelity of th
 
 **3) Details of backbone model used in the benchmark pipelines:**
 Regarding the backbone models used in Table 2:
-HippoRAG-2: Uses GPT-4o-mini, following the original experimental setup of the paper.
-KAG: Uses DeepSeek-Chat, as reported in its original manuscript.
-BrowseNet: For fair comparison, we reproduced results using five distinct models that includes GPT-4o-mini and DeepSeek-Chat and report results accordingly in the below table. In the table BN referes to BrowseNet.
+HippoRAG-2: Uses gpt-4o-mini, following the original experimental setup of the paper.
+KAG: Uses deepseek-chat, as reported in its original manuscript.
+BrowseNet: For fair comparison, we reproduced results using five distinct models that include gpt-4o-mini and deepseek-chat, and report results accordingly in the table below. In the table below, BN refers to BrowseNet.
 
 |    LLM    | HotpotQA ||2WikiMQA||MuSiQue||Average||
 |------|------|------|------|------|------|------|------|------|
 |  | EM | F1 | EM | F1 | EM | F1 | EM | F1 |
 | BN (gpt-4o-mini)  |  62.20  | 77.69   | 63.90   | 74.50  | 41.60  | 54.08    | 55.90   |  68.76  |
 | BN (gpt-3.5-turbo)  | 58.80  | 73.81  | 47.70   | 59.57   | 37.40   | 49.77  |47.97    | 61.05   |
-| BN (gpt-4.1-mini) | 63.20   | **79.21**   | 64.50   | 74.43   | 42.70   | 55.07   | 56.80   | 69.57   |
-| BN (deepseek-chat-v3)   |62.20   | 78.91   | **66.10**   | **75.86**   |**43.50**   | **56.25**   | **57.27**   | **70.34**   |
-| BN (gemini-2.0-flash)   | **63.40**   | 78.00  | 62.10   | 70.30   | 38.10   | 47.37   | 54.53   | 65.22   |
-|HippoRAG-2|59.30|76.9|60.50|69.70|35.00|49.30|51.60|65.30|
-|KAG|62.50|76.20|67.80|76.20|36.70|48.70|55.67|67.03|
+| BN (gpt-4.1-mini) | 63.20   | 79.21   | 64.50   | 74.43   | 42.70   | 55.07   | 56.80   | 69.57   |
+| BN (deepseek-chat)   |62.20   | 78.91   | 66.10   | 75.86   |43.50   | 56.25   | 57.27   | 70.34   |
+| BN (gemini-2.0-flash)   | 63.40   | 78.00  | 62.10   | 70.30   | 38.10   | 47.37   | 54.53   | 65.22   |
+|HippoRAG-2 (gpt-4o-mini)|59.30|76.9|60.50|69.70|35.00|49.30|51.60|65.30|
+|KAG (deepseek-chat) |62.50|76.20|67.80|76.20|36.70|48.70|55.67|67.03|
 
-Our findings show that BrowseNet achieves state-of-the-art performance regardless of the LLM backbone, further reinforcing the robustness of our approach.
+Our findings show that BrowseNet achieves state-of-the-art performance regardless of the LLM backbone, further reinforcing the robustness of our approach. 
 
 
 
