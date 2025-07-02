@@ -99,6 +99,43 @@ All experiments were conducted on a server with an NVIDIA A100 GPU and 512 GB of
 **Action:** We will incorporate this information into Appendix Section A.11 in the revised manuscript to enhance transparency and reproducibility. We also commit to open-sourcing the full codebase to support the reproducibility of all experiments reported in the manuscript.
 
 
+# Reply 2
+
+Thank you for the authors’ response. The authors have made efforts during the rebuttal period. However, compared to the previous version, the presentation of this paper still requires significant improvement (W1). In particular, for a long paper, simply including the main results is insufficient. Additionally, for some phenomena identified in the main results, there seems to be a lack of critical analysis (W2). Furthermore, this cycle submission appears to be missing the error analysis mentioned in the previous cycle.
+
+Given these weaknesses, I cannot be confident that minor revisions in the camera-ready version will address these issues, at least not sufficiently at this point.
+
+In addition, I have two additional questions:
+
+Could you provide the rationale for using the isomorphic accuracy metric, along with relevant citations?
+In Table 2, do HippoRAG, KAG, and BrowseNet all use the same backbone model? Could you provide the implementation details for these?
+In conclusion, at this stage, I have decided not to increase my original score. Thank you！
+
+We sincerely thank the reviewer for their continued engagement and thoughtful feedback. We address each point below in turn:
+
+1) **Error analysis:**
+We respectfully clarify that the error analysis requested in the previous review cycle has been included in the current submission. Specifically: Appendix Section A.8 and Table 11 provide a detailed manual evaluation of 100 randomly selected questions from the MuSiQue dataset where the BrowseNet pipeline received a zero F1 score. This error analysis is conducted in a component-wise fashion, aligning with the architecture of our pipeline: Knowledge Graph Construction, Query Subgraph Extraction, Semantic Retrieval and Answer Generation
+
+Each stage is analyzed to isolate sources of error and suggest directions for future improvement. We will ensure this analysis is more prominently referenced in the main paper to avoid any ambiguity.
+
+
+2) **Rationale behind using isomorphic accuracy:**
+The isomorphic accuracy metric is used to evaluate the structural fidelity of the query decomposition step, which is central to the BrowseNet pipeline. Specifically, the subgraph generated from the input query defines the reasoning chain to be followed across passages. To assess the correctness of this structure, we use graph isomorphism to compare the predicted subgraph against the ground-truth subgraph provided in benchmark datasets (e.g., MuSiQue). While we acknowledge that isomorphic accuracy is a binary and strict measure sensitive to even a single edge mismatch, it provides a rigorous way to evaluate whether the intended reasoning structure is faithfully recovered. Moreover, the use of graph isomorphism is well-established in the broader knowledge graph and graph neural network literature, where it is commonly used to assess structural equivalence [1,2]. We adopt this standard to offer a reliable proxy for reasoning path fidelity in multi-hop question answering.
+
+**References:**
+1) Dupty, M. H., Dong, Y., & Lee, W. S. (2024). PF-GNN: Differentiable particle filtering based approximation of universal graph representations. arXiv preprint arXiv:2401.17752.
+2) Wang, Y., Tang, W., Sun, H., Zhuang, Z., Fu, X., Wang, J., ... & Liao, J. (2024). Understanding and Guiding Weakly Supervised Entity Alignment with Potential Isomorphism Propagation. arXiv preprint arXiv:2402.03025.
+
+
+4) **Details of backbone model used in the benchmark pipelines:**
+Regarding the backbone models used in Table 2:
+HippoRAG-2: Uses GPT-4o-mini, following the original experimental setup of the paper.
+KAG: Uses DeepSeek-Chat, as reported in its original manuscript.
+BrowseNet: For fair comparison, we reproduced results using both models (GPT-4o-mini and DeepSeek-Chat) and report results accordingly (Refer response to Weakness-2).
+
+Our findings show that BrowseNet achieves state-of-the-art performance regardless of the LLM backbone, further reinforcing the robustness of our approach.
+
+
 # Reviewer BHPP: 
 We thank the reviewer for their valuable feedback. We will revise the manuscript to incorporate all reviewer comments in the camera-ready submission.
 
