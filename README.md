@@ -114,26 +114,25 @@ In conclusion, at this stage, I have decided not to increase my original score. 
 We sincerely thank the reviewer for their continued engagement and thoughtful feedback. We address each point below in turn:
 
 1) **Error analysis:**
-We respectfully clarify that the error analysis requested in the previous review cycle has been included in the current submission. Specifically: Appendix Section A.8 and Table 11 provide a detailed manual evaluation of 100 randomly selected questions from the MuSiQue dataset where the BrowseNet pipeline received a zero F1 score. This error analysis is conducted in a component-wise fashion, aligning with the architecture of our pipeline: Knowledge Graph Construction, Query Subgraph Extraction, Semantic Retrieval and Answer Generation
-
-Each stage is analyzed to isolate sources of error and suggest directions for future improvement. We will ensure this analysis is more prominently referenced in the main paper to avoid any ambiguity.
+We respectfully clarify that the error analysis requested in the previous review cycle has been included in the current submission. Specifically: Appendix Section A.8 and Table 11 provide a detailed manual evaluation of 100 randomly selected questions from the MuSiQue dataset where the BrowseNet pipeline received a zero F1 score. This error analysis is conducted in a component-wise fashion, aligning with the architecture of our pipeline: Knowledge Graph Construction, Query Subgraph Extraction, Semantic Retrieval, and Answer Generation. Each stage is analyzed to isolate sources of error and suggest directions for future improvement. We will ensure this analysis is more prominently referenced in the main paper to avoid any ambiguity.
 
 
 2) **Rationale behind using isomorphic accuracy:**
 The isomorphic accuracy metric is used to evaluate the structural fidelity of the query decomposition step, which is central to the BrowseNet pipeline. Specifically, the subgraph generated from the input query defines the reasoning chain to be followed across passages. To assess the correctness of this structure, we use graph isomorphism to compare the predicted subgraph against the ground-truth subgraph provided in benchmark datasets (e.g., MuSiQue). While we acknowledge that isomorphic accuracy is a binary and strict measure sensitive to even a single edge mismatch, it provides a rigorous way to evaluate whether the intended reasoning structure is faithfully recovered. Moreover, the use of graph isomorphism is well-established in the broader knowledge graph and graph neural network literature, where it is commonly used to assess structural equivalence [1,2]. We adopt this standard to offer a reliable proxy for reasoning path fidelity in multi-hop question answering.
 
-**References:**
-1) Dupty, M. H., Dong, Y., & Lee, W. S. (2024). PF-GNN: Differentiable particle filtering based approximation of universal graph representations. arXiv preprint arXiv:2401.17752.
-2) Wang, Y., Tang, W., Sun, H., Zhuang, Z., Fu, X., Wang, J., ... & Liao, J. (2024). Understanding and Guiding Weakly Supervised Entity Alignment with Potential Isomorphism Propagation. arXiv preprint arXiv:2402.03025.
+   **References:**
+   1) Dupty, M. H., Dong, Y., & Lee, W. S. (2024). PF-GNN: Differentiable particle filtering based approximation of universal graph representations. arXiv preprint arXiv:2401.17752.
+   2) Wang, Y., Tang, W., Sun, H., Zhuang, Z., Fu, X., Wang, J., ... & Liao, J. (2024). Understanding and Guiding Weakly Supervised Entity Alignment with Potential Isomorphism Propagation. arXiv preprint arXiv:2402.03025.
 
 
-4) **Details of backbone model used in the benchmark pipelines:**
+3) **Details of backbone model used in the benchmark pipelines:**
 Regarding the backbone models used in Table 2:
 HippoRAG-2: Uses GPT-4o-mini, following the original experimental setup of the paper.
 KAG: Uses DeepSeek-Chat, as reported in its original manuscript.
 BrowseNet: For fair comparison, we reproduced results using both models (GPT-4o-mini and DeepSeek-Chat) and report results accordingly (Refer response to Weakness-2).
 
 Our findings show that BrowseNet achieves state-of-the-art performance regardless of the LLM backbone, further reinforcing the robustness of our approach.
+
 
 
 # Reviewer BHPP: 
