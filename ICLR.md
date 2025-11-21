@@ -144,7 +144,7 @@ By restricting decomposition to DAGs, we ensure:
   
 **Scope and Future Work**: We acknowledge that if a user intentionally constructs a query with cyclic dependencies (e.g., "Answer Q1 if Q2 is true, and answer Q2 if Q1 is true"), BrowseNet would not handle it by design. However, such queries fall outside the scope of standard QA tasks and would require fundamentally different reasoning approaches (e.g., fixed-point computation or constraint satisfaction). For practical multi-hop QA, DAG-based decomposition is both sufficient and necessary.
 
-**weakness-4**
+**Weakness-4**
 Calling the constructed graph a “knowledge graph” seems somewhat misleading, since the edges primarily encode textual similarity or shared entity mentions, rather than semantic relations between well-defined concepts. It might be more accurate to refer to it as a semantic chunk graph or entity-linked similarity graph. Clarifying this terminology would prevent confusion for readers coming from the KG community.
 
 We recognize that a traditional knowledge graph involves entities as nodes and predicates as edges, while our graph is constructed over chunks of text, which suits retrieval-augmented generation tasks better. We initially followed prior work using the term "knowledge graph" [1][2] for similar graphs, but upon reflection, we agree the term could be clearer. We will revise the manuscript to replace "knowledge graph" with "graph of chunks" wherever appropriate
