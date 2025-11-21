@@ -47,12 +47,21 @@ The core idea focuses on context retrieval, but the novelty is limited since que
 
 We agree with the reviewer that the idea of query decomposition and graph-based iterative retrieval were explored previously, the novelty here is the pipeline that brings together the different these different aspects. On that note, we have compared with the existing methods, SiReRAG and GraphRAG as suggested by the reviewer. For the case of ArchRAG, the code has not been open-sourced yet by the authors, the anonymous link provided (https://anonymous.4open.science/r/H-CAR-AG-1E0B/) seems to have expired. Also, we have mailed the authors of the paper and we will benchmark our results against it once we have the codes. The results are given in the below table.
 
-|    Method    | HotpotQA ||2WikiMQA||MuSiQue||Average||
+|    Method (K=5)  | HotpotQA ||2WikiMQA||MuSiQue||Average||
 |------|------|------|------|------|------|------|------|------|
 |  | EM | F1 | EM | F1 | EM | F1 | EM | F1 |
-| Browsenet  |  62.20  | 77.69   | 63.90   | 74.50  | 41.60  | 54.08    | 55.90   |  68.76  |
-| SiReRAG  | 58.80  | 73.81  | 47.70   | 59.57   | 37.40   | 49.77  |47.97    | 61.05   |
-| GraphRAG | 63.20   | **79.21**   | 64.50   | 74.43   | 42.70   | 55.07   | 56.80   | 69.57   |
+| Browsenet (gpt-4o-mini) |  62.20  | 77.69   | 63.90   | 74.50  | 41.60  | 54.08    | 55.90   |  68.76  |
+| SiReRAG (gpt-4o-mini)  | 48.30  | 63.17  | 41.30   | 48.05   | 26.00   | 39.59  |   |    |
+| GraphRAG (gpt-4o-mini) | 51.40   | 67.60   | 45.70   | 61.00   | 27.00   | 42.00   | 41.37   | 56.87   |
+
+The answer generation model used for all the methods are gpt-4o-mini. Also, top-5 chunks were given for answer generation. In the main paper of SiReRAG, top-20 chunks were provided, hence for comparison with BrowseNet, we have implimented again with top-20 chunks and the results for that are shown below.
+
+|    Method (K=20)   | HotpotQA ||2WikiMQA||MuSiQue||Average||
+|------|------|------|------|------|------|------|------|------|
+|  | EM | F1 | EM | F1 | EM | F1 | EM | F1 |
+| Browsenet (gpt-4o-mini) | 62.20  | 78.36   | 68.2   | 78.47  | 44.50  | 57.77    |    |    |
+| SiReRAG (gpt-4o-mini)  | 52.80  | 69.17  | 46.10   | 54.82   | 29.80   | 44.96  |   |    |
+
 
 **Weakness-2:**
 Scalability to large, real-world corpora and real-time use cases is not clearly addressed, as experiments rely on controlled corpora with gold evidence and distractors.
