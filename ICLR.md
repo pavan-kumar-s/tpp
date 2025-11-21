@@ -128,3 +128,30 @@ Thank you for this important question. We clarify that while the k^p complexity 
 4. Beam Search Pruning: We retain only top-k scoring subgraphs, enabling early termination and further constraining computational cost.
 5. Ablation studies (Table 4) show that increasing subgraph count from 5 to 15 yields <0.1% performance gains, confirming we operate near the efficiency frontier.
 
+**Weakness-3 and Question-3:**
+The query decomposition is based on a directed acyclic graph, which might lead to a limitation for queries that do involve cycles or cannot be expressed as a DAG. Whether this is a source of issues is not discussed. How would BrowseNet handle queries that involve cycles, mutual dependencies, or other forms of recursive reasoning?
+
+We appreciate the opportunity to clarify our design choice regarding DAG-based query decomposition.
+1. Inherent Nature of Question Answering
+Question answering tasks are fundamentally acyclic by design. A well-posed question cannot logically require its own answer as a prerequisite—doing so would create an infinite loop and violate the principle of well-founded reasoning. For example, if Q1 requires Q2 to be answered, and Q2 requires Q1, neither question can be answered, making the query semantically ill-defined.
+2. Dataset Evidence
+Across our evaluation benchmarks (HotpotQA, 2WikiMQA, MuSiQue), all gold decomposition chains are acyclic. No instances of cycles or mutual dependencies appear in naturally-occurring multi-hop questions. This suggests that queries expressible as DAGs capture the full spectrum of practical QA scenarios.
+3. Design Justification
+By restricting decomposition to DAGs, we ensure:
+- Termination guarantees: Every subquestion has a well-defined base case
+- Tractable reasoning: No infinite loops or circular dependencies
+- Semantic validity: Decompositions remain faithful to the underlying question structure
+  
+**Scope and Future Work**: We acknowledge that if a user intentionally constructs a query with cyclic dependencies (e.g., "Answer Q1 if Q2 is true, and answer Q2 if Q1 is true"), BrowseNet would not handle it by design. However, such queries fall outside the scope of standard QA tasks and would require fundamentally different reasoning approaches (e.g., fixed-point computation or constraint satisfaction). For practical multi-hop QA, DAG-based decomposition is both sufficient and necessary.
+
+**weakness-4**
+Calling the constructed graph a “knowledge graph” seems somewhat misleading, since the edges primarily encode textual similarity or shared entity mentions, rather than semantic relations between well-defined concepts. It might be more accurate to refer to it as a semantic chunk graph or entity-linked similarity graph. Clarifying this terminology would prevent confusion for readers coming from the KG community.
+
+We recognize that a traditional knowledge graph involves entities as nodes and predicates as edges, while our graph is constructed over chunks of text, which suits retrieval-augmented generation tasks better. We initially followed prior work using the term "knowledge graph" [1][2] for similar graphs, but upon reflection, we agree the term could be clearer. We will revise the manuscript to replace "knowledge graph" with "graph of chunks" wherever appropriate
+
+**Action:**
+We will revise the manuscript to replace all instances of "knowledge graph" with "graph of chunks" to improve clarity and accuracy.
+
+**References:**
+1) Wang, Y., Lipka, N., Rossi, R. A., Siu, A., Zhang, R., & Derr, T. (2024, March). Knowledge graph prompting for multi-document question answering. In Proceedings of the AAAI conference on artificial intelligence (Vol. 38, No. 17, pp. 19206-19214).
+2) Yang, Z., Zhu, Z., & Zhu, J. (2025, April). CuriousLLM: Elevating multi-document question answering with llm-enhanced knowledge graph reasoning. In Proceedings of the 2025 Conference of the Nations of the Americas Chapter of the Association for Computational Linguistics: Human Language Technologies (Volume 3: Industry Track) (pp. 274-286).
