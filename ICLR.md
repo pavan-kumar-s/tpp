@@ -45,7 +45,10 @@ We thank the reviewer for their valuable feedback. Our response to the comments 
 **Weakness-1:**
 The core idea focuses on context retrieval, but the novelty is limited since query decomposition and graph-based iterative retrieval have been explored previously; comparison to similar methods (e.g., SiReRAG, ArchRAG, GraphRAG) is missing.
 
-We agree with the reviewer that the idea of query decomposition and graph-based iterative retrieval were explored previously, the novelty here is the pipeline that brings together the different these different aspects. On that note, we have compared with the existing methods, SiReRAG and GraphRAG as suggested by the reviewer. For the case of ArchRAG, the code has not been open-sourced yet by the authors, the anonymous link provided (https://anonymous.4open.science/r/H-CAR-AG-1E0B/) seems to have expired. Also, we have mailed the authors of the paper and we will benchmark our results against it once we have the codes. As both SireRAG and GraphRAG do not follow retrieve-then-read paradigm, only the question answer results are shown in the below table. 
+We agree these approaches have been studied before; however, the novelty of BrowseNet lies in its unified pipeline that integrally combines query decomposition, graph-of-chunks construction, and efficient one-shot retrieval, which to our knowledge is not previously realized. In response to the reviewer’s suggestion, we have benchmarked BrowseNet against related methods SiReRAG and GraphRAG. Unfortunately, the ArchRAG code is not publicly available, and the anonymous access link appears expired. We have contacted the authors and will include comparisons once the code becomes accessible.
+
+Below are comparison results on HotpotQA, 2WikiMQA, and MuSiQue datasets using the gpt-4o-mini answer generation model with top-5 chunks provided:
+
 
 |    Method (K=5)  | HotpotQA ||2WikiMQA||MuSiQue||Average||
 |------|------|------|------|------|------|------|------|------|
@@ -54,15 +57,17 @@ We agree with the reviewer that the idea of query decomposition and graph-based 
 | SiReRAG (gpt-4o-mini)  | 48.30  | 63.17  | 41.30   | 48.05   | 26.00   | 39.59  | 38.53  |50.27   |
 | GraphRAG (gpt-4o-mini) | 51.40   | 67.60   | 45.70   | 61.00   | 27.00   | 42.00   | 41.37   | 56.87   |
 
-The answer generation model used for all the methods are gpt-4o-mini. Also, top-5 chunks were given for answer generation. In the main paper of SiReRAG, top-20 chunks were provided, hence for comparison with BrowseNet, we have implimented again with top-20 chunks and the results for that are shown below.
+In the main paper of SiReRAG, top-20 chunks were provided, hence for comparison with BrowseNet, we have implimented again with top-20 chunks and the results for that are shown below.
 
 |    Method (K=20)   | HotpotQA ||2WikiMQA||MuSiQue||Average||
 |------|------|------|------|------|------|------|------|------|
 |  | EM | F1 | EM | F1 | EM | F1 | EM | F1 |
 | Browsenet (gpt-4o-mini) | **62.20**  | **78.36**   | **68.20**   | **78.47**  | **44.50**  | **57.77**    | **58.3**   | **71.53**   |
 | SiReRAG (gpt-4o-mini)  | 52.80  | 69.17  | 46.10   | 54.82   | 29.80   | 44.96  | 42.90  |  56.32  |
-As seen from both the Tables, BrowseNet's performance is superioir to that of the other two methods establishing as the state-of-the-art model. 
-**Action:** We will include the results of SiReRAG and GraphRAG (for K=5) in the results of the paper.
+
+As seen from both the Tables, BrowseNet achieves superior performance, establishing itself as the state-of-the-art in this retrieve-then-read framework setting.
+
+**Action:** We will incorporate these comparison results with SiReRAG and GraphRAG (for K=5 ) into the paper’s result section. 
 
 **Weakness-2:**
 Scalability to large, real-world corpora and real-time use cases is not clearly addressed, as experiments rely on controlled corpora with gold evidence and distractors.
