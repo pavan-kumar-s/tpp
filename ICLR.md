@@ -156,7 +156,7 @@ We will revise the manuscript to replace all instances of "knowledge graph" with
 1) Wang, Y., Lipka, N., Rossi, R. A., Siu, A., Zhang, R., & Derr, T. (2024, March). Knowledge graph prompting for multi-document question answering. In Proceedings of the AAAI conference on artificial intelligence (Vol. 38, No. 17, pp. 19206-19214).
 2) Yang, Z., Zhu, Z., & Zhu, J. (2025, April). CuriousLLM: Elevating multi-document question answering with llm-enhanced knowledge graph reasoning. In Proceedings of the 2025 Conference of the Nations of the Americas Chapter of the Association for Computational Linguistics: Human Language Technologies (Volume 3: Industry Track) (pp. 274-286).
 
-**weakness-5**
+**Weakness-5**
 Some improvements reported (e.g., Table 2, HotpotQA in Table 3) are small, and it’s unclear whether they are statistically significant. Including confidence intervals or significance tests (e.g., paired bootstrap) would increase confidence in the reported gains.
 
 **Question-4**
