@@ -45,6 +45,15 @@ We thank the reviewer for their valuable feedback. Our response to the comments 
 **Weakness-1:**
 The core idea focuses on context retrieval, but the novelty is limited since query decomposition and graph-based iterative retrieval have been explored previously; comparison to similar methods (e.g., SiReRAG, ArchRAG, GraphRAG) is missing.
 
+We agree with the reviewer that the idea of query decomposition and graph-based iterative retrieval were explored previously, the novelty here is the pipeline that brings together the different these different aspects. On that note, we have compared with the existing methods, SiReRAG and GraphRAG as suggested by the reviewer. For the case of ArchRAG, the code has not been open-sourced yet by the authors, the anonymous link provided (https://anonymous.4open.science/r/H-CAR-AG-1E0B/) seems to have expired. Also, we have mailed the authors of the paper and we will benchmark our results against it once we have the codes. The results are given in the below table.
+
+|    Method    | HotpotQA ||2WikiMQA||MuSiQue||Average||
+|------|------|------|------|------|------|------|------|------|
+|  | EM | F1 | EM | F1 | EM | F1 | EM | F1 |
+| Browsenet  |  62.20  | 77.69   | 63.90   | 74.50  | 41.60  | 54.08    | 55.90   |  68.76  |
+| SiReRAG  | 58.80  | 73.81  | 47.70   | 59.57   | 37.40   | 49.77  |47.97    | 61.05   |
+| GraphRAG | 63.20   | **79.21**   | 64.50   | 74.43   | 42.70   | 55.07   | 56.80   | 69.57   |
+
 **Weakness-2:**
 Scalability to large, real-world corpora and real-time use cases is not clearly addressed, as experiments rely on controlled corpora with gold evidence and distractors.
 
