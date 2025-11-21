@@ -155,3 +155,26 @@ We will revise the manuscript to replace all instances of "knowledge graph" with
 **References:**
 1) Wang, Y., Lipka, N., Rossi, R. A., Siu, A., Zhang, R., & Derr, T. (2024, March). Knowledge graph prompting for multi-document question answering. In Proceedings of the AAAI conference on artificial intelligence (Vol. 38, No. 17, pp. 19206-19214).
 2) Yang, Z., Zhu, Z., & Zhu, J. (2025, April). CuriousLLM: Elevating multi-document question answering with llm-enhanced knowledge graph reasoning. In Proceedings of the 2025 Conference of the Nations of the Americas Chapter of the Association for Computational Linguistics: Human Language Technologies (Volume 3: Industry Track) (pp. 274-286).
+
+**weakness-5**
+Some improvements reported (e.g., Table 2, HotpotQA in Table 3) are small, and it’s unclear whether they are statistically significant. Including confidence intervals or significance tests (e.g., paired bootstrap) would increase confidence in the reported gains.
+
+**Question-4**
+The isomorphic accuracy is an interesting way to measure the generated subgraphs. I assume that since the graphs are likely small, you used an exact algorithm for isomorphism check. Could you please elaborate on this?
+
+Thank you for your interest in our evaluation methodology. We clarify the implementation details of the isomorphism check below.
+
+**Algorithm Used:** We employ **NetworkX's `is_isomorphic()` function**, which implements the VF2 algorithm for graph isomorphism testing. This is an exact algorithm that provides deterministic results.
+
+**Computational Feasibility**
+As you correctly note, the query subgraphs in our evaluation datasets are small:
+- Average node count: 2-4 nodes (corresponding to 2-4 subquestions)
+- Maximum depth: 4 hops (MuSiQue dataset)
+- Typical structure: Linear or tree-like dependencies with minimal branching
+
+For graphs of this size, the VF2 algorithm runs in effectively constant time (< 1ms per comparison), making exact isomorphism checking tractable even across hundreds of test queries.
+
+**Scalability Note**
+For applications involving larger knowledge graphs or more complex queries, approximate graph matching algorithms could be substituted. However, for standard multi-hop QA benchmarks, exact isomorphism checking remains computationally efficient and provides the most rigorous evaluation metric.
+
+
