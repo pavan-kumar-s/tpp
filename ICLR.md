@@ -112,9 +112,19 @@ Regarding computational cost, we have quantified the LLM-related overhead in App
 
 **Action:**
 We will clarify this distinction in the manuscript, explicitly state the meaning of minimizing LLM dependence during retrieval.
-
-
+ 
 **References:**
 1) Harsh Trivedi, Niranjan Balasubramanian, Tushar Khot, and Ashish Sabharwal. Interleaving retrieval with chain-of-thought reasoning for knowledge-intensive multi-step questions. arXiv preprint arXiv:2212.10509, 2022a.
 2) Yao Yao, Zuchao Li, and Hai Zhao. Beyond chain-of-thought, effective graph-of-thought reasoning in language models. arXiv preprint arXiv:2305.16582, 2023.
 3) Yu Wang, Nedim Lipka, Ryan A Rossi, Alexa Siu, Ruiyi Zhang, and Tyler Derr. Knowledge graph prompting for multi-document question answering. In Proceedings of the AAAI Conference on Artificial Intelligence, volume 38, pp. 19206–19214, 2024.
+
+**Weakness-2 and Question-2:**
+An important source of cost is in retrieval for non-initiator nodes. This requires considering a total of k^p chunks that need to be scored, increasing the cost of the method. The retrieval process for non-initiator nodes appears to involve scoring k^p candidates. Could you provide more details about how this complexity behaves in practice?
+
+Thank you for this important question. We clarify that while the k^p complexity is theoretically valid, practical factors might mitigate this concern.
+1. Sparse Query Structures: Most evaluation datasets have shallow, sequential dependencies (p ≤ 4). Even with k=5 and p=2, we evaluate only 25 combinations.
+2. Graph-Based Pruning: Candidate chunks are restricted to knowledge graph neighbors (Algorithm 1, lines 11-12), drastically reducing the effective search space versus corpus-wide evaluation.
+3. Empirical Efficiency: BrowseNet's retrieval stage averages **1.19 seconds per query** (MuSiQue), with only **0.49 seconds additional overhead** compared to HippoRAG-2, while achieving substantially higher recall (R5: 93.30 vs. 90.20).
+4. Beam Search Pruning: We retain only top-k scoring subgraphs, enabling early termination and further constraining computational cost.
+5. Ablation studies (Table 4) show that increasing subgraph count from 5 to 15 yields <0.1% performance gains, confirming we operate near the efficiency frontier.
+
