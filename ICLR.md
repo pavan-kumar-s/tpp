@@ -75,6 +75,10 @@ Scalability to large, real-world corpora and real-time use cases is not clearly 
 **Weakness-3:**
 Fairness of comparison is unclear, particularly whether the same backbone models (generation, NER, embeddings) were used across baselines, which may confound reported improvements.
 
+Thank you for raising the concern regarding the fairness of comparison. We clarify that simple baselines and dense retrievers do not utilize LLMs. For comparable methods such as RAPTOR, HippoRAG, HippoRAG-2, LightRAG, GraphRAG and SiReRAG, we have consistently implemented gpt-4o-mini for indexing, retrieval, and question answering to ensure a fair evaluation. Specifically, HippoRAG-2 requires an embedding model, for which we used NV-Embed-v2 the same embedding model employed by BrowseNet. Furthermore, as reported in the main results and ablation studies, BrowseNet demonstrates superior performance using NV-Embed-v2 and maintains robustness regardless of the choice of NER models (GliNER, gpt-4o, Claude-3.7-sonnet), subquery decomposition models (gpt-4o, Deepseek Reasoner, Claude-3.7-sonnet, gpt-4o-mini), or generation models (gpt-4o-mini, gpt-3.5-turbo, gpt-4.1-mini, Deepseek-chat-v3, Gemini-2.0-flash).
+
+**Action**: We will clarify these backbone model settings across baselines and our method to emphasize fairness and robustness of the comparison.
+
 **Weakness-4:**
 The current framework is optimized for structured multi-hop reasoning and may not directly generalize to open-domain retrieval or tasks with unstructured context dependencies.
 
