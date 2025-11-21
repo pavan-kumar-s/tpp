@@ -72,6 +72,10 @@ As seen from both the Tables, BrowseNet achieves superior performance, establish
 **Weakness-2:**
 Scalability to large, real-world corpora and real-time use cases is not clearly addressed, as experiments rely on controlled corpora with gold evidence and distractors.
 
+To better reflect real-world use cases, we have modified the benchmark datasets (HotpotQA, MuSiQue, and 2WikiMultiHopQA) by including all passages from other questions as candidate distractors. As shown in Table-1, the number of nodes reflects the number of passages that are given as candidate passages for all the questions in the benchmark dataset. This effectively enlarges the candidate corpus, simulating a more realistic retrieval setting where numerous irrelevant documents must be filtered.
+
+**Action**: We will clearly describe this benchmark modification in the manuscript to demonstrate BrowseNet’s applicability and robustness in larger, more challenging retrieval scenarios.
+
 **Weakness-3:**
 Fairness of comparison is unclear, particularly whether the same backbone models (generation, NER, embeddings) were used across baselines, which may confound reported improvements.
 
