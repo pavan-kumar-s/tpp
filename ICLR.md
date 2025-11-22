@@ -130,6 +130,8 @@ Thank you for this important question. We clarify that while the k^p complexity 
 4. Beam Search Pruning: We retain only top-k scoring subgraphs, enabling early termination and further constraining computational cost.
 5. Ablation studies (Table 4) show that increasing subgraph count from 5 to 15 yields <0.1% performance gains, confirming we operate near the efficiency frontier.
 
+**Action:** We will add information about the complexity at the appendix section in the revised version
+
 **Weakness-3 and Question-3:**
 The query decomposition is based on a directed acyclic graph, which might lead to a limitation for queries that do involve cycles or cannot be expressed as a DAG. Whether this is a source of issues is not discussed. How would BrowseNet handle queries that involve cycles, mutual dependencies, or other forms of recursive reasoning?
 
