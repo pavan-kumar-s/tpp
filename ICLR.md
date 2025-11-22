@@ -163,7 +163,7 @@ We agree that including confidence intervals and statistical significance testin
 
 
 |    Method    | HotpotQA ||2WikiMQA||MuSiQue||
-|------|------|------|------|------|------|------|------|
+|------|------|------|------|------|------|------|
 |  | Recall@2 | Recall@5 | Recall@2 | Recall@5 | Recall@2 | Recall@5 |
 | NV-embed-V2  | **83.96±0.79**  | 95.68±0.43   | 68.99±0.70   |  76.65±0.78| 53.33±0.89 | 69.80±0.91  |  
 | HippoRAG-2 |81.75±0.84 | 96.18±0.44  | 75.47±0.77   | 90.63±0.58   | 53.72±0.92   | 73.68±0.84  |  
@@ -189,4 +189,43 @@ For graphs of this size, the VF2 algorithm runs in effectively constant time (< 
 **Scalability Note**
 For applications involving larger knowledge graphs or more complex queries, approximate graph matching algorithms could be substituted. However, for standard multi-hop QA benchmarks, exact isomorphism checking remains computationally efficient and provides the most rigorous evaluation metric.
 
+# Reviewer Dpwg:
+We thank the reviewer for their valuable feedback. Our response to the comments are as follows
 
+**Weakness-1:**
+Novelty is limited. KG construction (Section 3.1), query decomposition (Section 3.2.1), and answer generation (Section 3.3) are standard practice in the literature. The rest of the approach, KG traversal (Section 3.2.2), is heuristic and its generalizability is not well justified given experiments on only three datasets.
+
+BrowseNet indeed builds on standard components such as KG construction, query decomposition, and answer generation, but the contribution lies in how these elements are integrated into a unified, graph–based associative retrieval pipeline and in the specific traversal and candidate-pruning strategy used for multi-hop QA.​
+
+BrowseNet’s graph traversal is not a generic heuristic walk but a query-subgraph–guided process that combines: (i) LLM-based decomposition into an explicit query subgraph; (ii) alignment of subgraph nodes with initiator chunks via semantic similarity; (iii) constrained expansion over a content-centric graph rather than an entity-only KG; and (iv) multi-hop scoring that jointly considers local subquery relevance and consistency with the global multi-hop question. This design allows one-shot query decomposition followed by structured, bounded exploration, which differs from existing KG-RAG and GraphRAG variants that typically rely on iterative LLM-in-the-loop traversal or purely similarity-based expansion.​
+
+Regarding generalizability, BrowseNet is evaluated on three challenging multi-hop benchmarks (HotpotQA, 2WikiMultiHopQA, MuSiQue), which together cover diverse reasoning patterns (bridge, comparison, compositional reasoning) across varied topics. Across these datasets, BrowseNet consistently outperforms strong graph- and structure-aware RAG baselines such as GraphRAG and SiReRAG in EM and F1, suggesting that the traversal strategy is not overfit to a single corpus or question style
+
+
+**Weakness-2 and Quesion-1:**
+Baselines are focused on recent RAG solutions, but the proposed approach is closely related to early multi-hop QA solutions, which are not compared empirically.
+Can you compare your approach with early multi-hop QA methods that also build a graph of passages based on their similarity (e.g., common entities)?
+
+Our baselines focus on state-of-the-art RAG solutions that currently achieve the best performance on multi-hop QA benchmarks. Early multi-hop QA methods such as KG-Prompting [1] employ a different evaluation setting: they construct one question-specific graph per query using the labeled distractors and golden passages provided for that question. In contrast, our method extends the benchmark difficulty by augmenting the candidate corpus to include all passages from other questions as distractors as mentioned in the text. This makes the retrieval task significantly harder and more realistic, where the system must select relevant context from a large, mixed set rather than a question-limited set of passages.
+
+Because of this fundamental difference in setup, direct empirical comparison with early multi-hop QA methods is not feasible.
+
+**References:**
+1) Wang, Y., Lipka, N., Rossi, R. A., Siu, A., Zhang, R., & Derr, T. (2024, March). Knowledge graph prompting for multi-document question answering. In Proceedings of the AAAI conference on artificial intelligence (Vol. 38, No. 17, pp. 19206-19214).
+
+**Weakness-3**
+The constructed KG is actually not a KG but a graph of passages connected based on common entities. This is a common practice in conventional multi-hop QA research. It is not a KG that should represent relations between entities.
+
+We recognize that a traditional knowledge graph involves entities as nodes and predicates as edges, while our graph is constructed over chunks of text, which suits retrieval-augmented generation tasks better. We initially followed prior work using the term "knowledge graph" [1][2], but upon reflection, we agree the term could be clearer. We will revise the manuscript to replace "knowledge graph" with "graph of chunks" wherever appropriate
+
+**Action:**
+We will revise the manuscript to replace all instances of "knowledge graph" with "graph of chunks" to improve clarity and accuracy.
+
+**References:**
+1) Wang, Y., Lipka, N., Rossi, R. A., Siu, A., Zhang, R., & Derr, T. (2024, March). Knowledge graph prompting for multi-document question answering. In Proceedings of the AAAI conference on artificial intelligence (Vol. 38, No. 17, pp. 19206-19214).
+2) Yang, Z., Zhu, Z., & Zhu, J. (2025, April). CuriousLLM: Elevating multi-document question answering with llm-enhanced knowledge graph reasoning. In Proceedings of the 2025 Conference of the Nations of the Americas Chapter of the Association for Computational Linguistics: Human Language Technologies (Volume 3: Industry Track) (pp. 274-286).
+
+**Question-2**
+How do you demonstrate the generalizability of your heuristic graph traversal?
+
+The generalizability of our heuristic graph traversal is demonstrated through consistent strong performance across three diverse multi-hop QA benchmarks, HotpotQA, 2WikiMultiHopQA, and MuSiQue—which encompass varied reasoning types including bridge, comparison, and compositional questions in multiple domains. These datasets differ significantly in corpus size, question complexity, and domain, yet BrowseNet’s traversal strategy consistently outperforms competitive graph- and structure-aware retrieval baselines such as HippoRAG and SiReRAG. This empirical evidence indicates that our traversal heuristic effectively adapts to different reasoning requirements and corpus characteristics without being overfitted to a single dataset or domain.
