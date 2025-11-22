@@ -206,12 +206,22 @@ This novelty in the design of BrowseNet allows one-shot query decomposition foll
 Baselines are focused on recent RAG solutions, but the proposed approach is closely related to early multi-hop QA solutions, which are not compared empirically.
 Can you compare your approach with early multi-hop QA methods that also build a graph of passages based on their similarity (e.g., common entities)?
 
-Our baselines focus on state-of-the-art RAG solutions that currently achieve the best performance on multi-hop QA benchmarks. Early multi-hop QA methods such as KG-Prompting [1] employ a different evaluation setting: they construct one question-specific graph per query using the labeled distractors and golden passages provided for that question. In contrast, our method extends the benchmark difficulty by augmenting the candidate corpus to include all passages from other questions as distractors as mentioned in the text. This makes the retrieval task significantly harder and more realistic, where the system must select relevant context from a large, mixed set rather than a question-limited set of passages.
+Our baselines focus on state-of-the-art RAG solutions that currently achieve the best performance on multi-hop QA benchmarks. The closest early multi-hop QA method is KG-Prompting [1] that has the nodes as chunks and edges are based on the keywords. This method employ a different evaluation setting: they construct one question-specific graph per query using the labeled distractors and golden passages provided for that question. In contrast, our method extends the benchmark difficulty by augmenting the candidate corpus to include all passages from other questions as distractors as mentioned in the text. This makes the retrieval task significantly harder and more realistic, where the system must select relevant context from a large, mixed set rather than a question-limited set of passages.
 
-Because of this fundamental difference in setup, direct empirical comparison with early multi-hop QA methods is not feasible.
+Also, BrowseNet has been benchmarked against RAPTOR [2] in the main text. RAPTOR constructs the knowledge graph on top of the chunks and the edges reflect the similarities between them. Furthermore, we have now included a new benchmark, SiReRAG [3] to compare with BrowseNet. SiReRAG includes both kinds of graph: chunk based and entity based. The results on question-answering on comparison to SiReRAG is given in below table.
+
+
+|    Method (K=5)  | HotpotQA ||2WikiMQA||MuSiQue||Average||
+|------|------|------|------|------|------|------|------|------|
+|  | EM | F1 | EM | F1 | EM | F1 | EM | F1 |
+| Browsenet (gpt-4o-mini) | **62.20**  | **77.69**   | **63.90**   | **74.50**  | **41.60**  | **54.08**    | **55.90**   |  **68.76**  |
+| SiReRAG (gpt-4o-mini)  | 48.30  | 63.17  | 41.30   | 48.05   | 26.00   | 39.59  | 38.53  |50.27   |
+
 
 **References:**
 1) Wang, Y., Lipka, N., Rossi, R. A., Siu, A., Zhang, R., & Derr, T. (2024, March). Knowledge graph prompting for multi-document question answering. In Proceedings of the AAAI conference on artificial intelligence (Vol. 38, No. 17, pp. 19206-19214).
+2) Sarthi, P., Abdullah, S., Tuli, A., Khanna, S., Goldie, A., & Manning, C. D. (2024, May). Raptor: Recursive abstractive processing for tree-organized retrieval. In The Twelfth International Conference on Learning Representations.
+3) Zhang, N., Choubey, P. K., Fabbri, A., Bernadett-Shapiro, G., Zhang, R., Mitra, P., ... & Wu, C. S. (2025). Sirerag: Indexing similar and related information for multihop reasoning. arXiv preprint arXiv:2412.06206. In The Thirteenth International Conference on Learning Representations.
 
 **Weakness-3**
 The constructed KG is actually not a KG but a graph of passages connected based on common entities. This is a common practice in conventional multi-hop QA research. It is not a KG that should represent relations between entities.
