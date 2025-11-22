@@ -88,6 +88,8 @@ The current framework is optimized for structured multi-hop reasoning and may no
 
 BrowseNet is designed to be robust to varying query structures. When a query cannot be decomposed into subqueries, retrieval relies solely on initiator nodes, effectively performing a semantic search over the entire corpus. Additionally, during retrieval for each subquery, similarity scores are also computed between chunks and the original multi-hop query, allowing the system to maintain relevance to the full query context. Also, BrowseNet only requires keyword prediction for constructing the graph-of-chunks, hence it creates structured context from the unstructured data and works for any multi-hop reasoning setting. Exploring how performance improves by leveraging such structural preprocessing remains an interesting direction for future work.
 
+**Action:** We will include this point in the final revised version of the manuscript
+
 **Weakness-5:**
 The approach depends on LLM-based query decomposition, which may introduce structural or semantic errors when sub-queries are misgenerated, leading to cascading retrieval failures.
 
