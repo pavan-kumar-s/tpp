@@ -36,7 +36,7 @@ L202-L220: Please clarify this search process on how this is related to beam sea
 
 In BrowseNet, the retrieval over the knowledge graph during multi-hop questions follows a principled graph traversal guided by the decomposed query-subgraph. For non-initiator nodes in the query-subgraph, we consider all combinations of candidates retrieved from predecessor nodes and gather their neighbors as the candidate corpus for the next retrieval step. From this expanded candidate set, we score chunks semantically relative to the current subquery and select the top-k scoring subgraphs. This scoring and selection over multiple candidate subgraphs resembles a beam search that maintains a fixed-width set of best subgraph paths as retrieval proceeds along the query-subgraph in topological order. Thus, while the traversal is not beam search in the classic sequence generation sense, it analogously explores multiple hypotheses (candidate subgraphs) at each step, pruning them according to a scoring function to efficiently focus retrieval on promising reasoning paths.
 
-**Action:** We will clarify this analogy to beam search in the paper and explicitly describe the candidate combination, scoring, and pruning process during subgraph retrieval to improve reader understanding.
+**Action:** We will clarify this analogy to beam search in the paper and explicitly describe the candidate combination, scoring, and pruning process during subgraph retrieval with a figure in appendix to improve reader understanding.
 
 
 # Reviewer oVjo:
@@ -72,7 +72,7 @@ As seen from both the Tables, BrowseNet achieves superior performance, establish
 **Weakness-2:**
 Scalability to large, real-world corpora and real-time use cases is not clearly addressed, as experiments rely on controlled corpora with gold evidence and distractors.
 
-To better reflect real-world use cases, we have modified the benchmark datasets (HotpotQA, MuSiQue, and 2WikiMultiHopQA) by including all passages from other questions as candidate distractors. As shown in Table-1, the number of nodes reflects the number of passages that are given as candidate passages for all the questions in the benchmark dataset. This effectively enlarges the candidate corpus, simulating a more realistic retrieval setting where numerous irrelevant documents must be filtered.
+To better reflect real-world use cases, we have modified the benchmark datasets (HotpotQA, MuSiQue, and 2WikiMultiHopQA) by including all passages from other questions as candidate distractors. As shown in Table-1, the number of nodes reflects the number of passages that are given as candidate passages for all the questions in the benchmark dataset. The number of passages for the benchmarks are 9,221, 6,119 and 11,656 respectively for HotpotQA, 2WikiMQA and Musique. This effectively enlarges the candidate corpus, simulating a more realistic retrieval setting where numerous irrelevant documents must be filtered.
 
 **Action**: We will clearly describe this benchmark modification in the manuscript to demonstrate BrowseNet’s applicability and robustness in larger, more challenging retrieval scenarios.
 
