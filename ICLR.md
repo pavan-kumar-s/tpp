@@ -93,7 +93,7 @@ BrowseNet is designed to be robust to varying query structures. When a query can
 **Weakness-5:**
 The approach depends on LLM-based query decomposition, which may introduce structural or semantic errors when sub-queries are misgenerated, leading to cascading retrieval failures.
 
-Query decomposition is a critical element of our approach and hence we have performed a detailed error analysis on the subquery generation on answer generation. We have presented the error analysis in Appendix A.10.
+Query decomposition is a critical element of our approach and hence we have performed a detailed error analysis on the subquery generation on answer generation. We have summarised the error analysis in main text and presented it in a detailed manner in Appendix A.10.
 
 
 # Reviewer 9MFQ:
