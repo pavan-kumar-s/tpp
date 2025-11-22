@@ -125,7 +125,7 @@ An important source of cost is in retrieval for non-initiator nodes. This requir
 
 Thank you for this important question. We clarify that while the k^p complexity is theoretically valid, practical factors might mitigate this concern.
 1. Sparse Query Structures: Most evaluation datasets have shallow, sequential dependencies (p ≤ 4). Even with k=5 and p=2, we evaluate only 25 combinations.
-2. Graph-Based Pruning: Candidate chunks are restricted to knowledge graph neighbors (Algorithm 1, lines 11-12), drastically reducing the effective search space versus corpus-wide evaluation.
+2. Graph-Based Pruning: Candidate chunks are restricted to graph-of-chunk (knowledge graph) neighbors (Algorithm 1, lines 11-12), drastically reducing the effective search space versus corpus-wide evaluation.
 3. Empirical Efficiency: BrowseNet's retrieval stage averages **1.19 seconds per query** (MuSiQue), with only **0.49 seconds additional overhead** compared to HippoRAG-2, while achieving substantially higher recall (R5: 93.30 vs. 90.20).
 4. Beam Search Pruning: We retain only top-k scoring subgraphs, enabling early termination and further constraining computational cost.
 5. Ablation studies (Table 4) show that increasing subgraph count from 5 to 15 yields <0.1% performance gains, confirming we operate near the efficiency frontier.
