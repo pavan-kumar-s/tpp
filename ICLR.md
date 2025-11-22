@@ -159,6 +159,18 @@ We will revise the manuscript to replace all instances of "knowledge graph" with
 **Weakness-5**
 Some improvements reported (e.g., Table 2, HotpotQA in Table 3) are small, and it’s unclear whether they are statistically significant. Including confidence intervals or significance tests (e.g., paired bootstrap) would increase confidence in the reported gains.
 
+We agree that including confidence intervals and statistical significance testing would strengthen the validity of our reported improvements. We plan to apply paired bootstrap to estimate confidence intervals. We will include the confidence intervals obtained from paired bootstrap (n = 200) as shown in the below Table. 
+
+
+|    Method    | HotpotQA ||2WikiMQA||MuSiQue||
+|------|------|------|------|------|------|------|------|
+|  | Recall@2 | Recall@5 | Recall@2 | Recall@5 | Recall@2 | Recall@5 |
+| NV-embed-V2  | **83.96±0.79**  | 95.68±0.43   | 68.99±0.70   |  76.65±0.78| 53.33±0.89 | 69.80±0.91  |  
+| HippoRAG-2 |81.75±0.84 | 96.18±0.44  | 75.47±0.77   | 90.63±0.58   | 53.72±0.92   | 73.68±0.84  |  
+| BrowseNet  | 83.90±0.81 |**96.40±0.42**  | **76.79±0.78**   | **93.30±0.46** |  **55.15±0.91**  | **73.88±0.90**   |
+
+**Action:** We will include paired bootstrap-based confidence intervals in Table 2 of the revised manuscript to provide a more rigorous evaluation of BrowseNet’s performance gains.
+
 **Question-4**
 The isomorphic accuracy is an interesting way to measure the generated subgraphs. I assume that since the graphs are likely small, you used an exact algorithm for isomorphism check. Could you please elaborate on this?
 
